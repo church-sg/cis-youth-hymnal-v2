@@ -1,0 +1,49 @@
+{{ define "main" }}
+<section>
+  <div class="hero header">
+    <p>
+      <!-- TODO For responsiveness, don't show Title below certain width -->
+      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span>: {{
+      .Title }}
+    </p>
+  </div>
+  <div>{{.Content}}</div>
+</section>
+
+<div class="container content">
+  <ul>
+    {{/*
+    https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
+    */}} {{ $pages := sort (where site.RegularPages "Section" .Section)
+    ".File.TranslationBaseName" }} {{ with $pages.Prev . }}
+    <li>
+      Next Hymn:
+      <a class="previous" href="{{ .Permalink }}"
+        >{{ .File.TranslationBaseName }}</a
+      >
+    </li>
+    {{ end }} {{ with $pages.Next . }}
+    <li>
+      Previous Hymn:
+      <a class="next" href="{{ .Permalink }}"
+        >{{ .File.TranslationBaseName }}</a
+      >
+    </li>
+    {{ end }} {{ if ne .Params.medleyFrom 0 }}
+    <li>
+      Medleys from:
+      <a class="previous" href="{{ ref . .Params.medleyFrom }}"
+        >{{ .Params.medleyFrom }}</a
+      >
+    </li>
+    {{ end }} {{ if ne .Params.medleyTo 0 }}
+    <li>
+      Medleys to:
+      <a class="next" href="{{ ref . .Params.medleyTo }}"
+        >{{ .Params.medleyTo }}</a
+      >
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
