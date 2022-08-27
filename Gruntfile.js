@@ -17,7 +17,14 @@ module.exports = function (grunt) {
         }
       )
 
-      return pagesIndex
+      //sort pages index by hymn number
+      var sortedPagesIndex = pagesIndex.sort((a, b) => {
+        var aHymnNo = a.href.replace("/hymns/", "")
+        var bHymnNo = b.href.replace("/hymns/", "")
+        return parseInt(aHymnNo) - parseInt(bHymnNo)
+      })
+
+      return sortedPagesIndex
     }
 
     var processFile = function (abspath, filename) {
