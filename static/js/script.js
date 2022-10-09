@@ -23,13 +23,13 @@ function initUI() {
 
     var query = $(this).val()
     var results
-    /*if () {
+    if (isNaN(parseInt(query))) {
+      //if query is words
+      results = search(query)
+    } else {
       //if query is number
       var results = numberSearch(query)
-    } else {*/
-    //if query is words
-    results = search(query)
-    /*}*/
+    }
 
     renderResults(results)
   })
@@ -45,9 +45,15 @@ function search(query) {
   return pagesIndex.filter((page) => {
     return (
       page.title.toLowerCase().search(query.toLowerCase()) != -1 ||
-      page.content.toLowerCase().search(query.toLowerCase()) != -1 ||
-      page.href.replace("/hymns/", "").search(query) != -1
+      page.content.toLowerCase().search(query.toLowerCase()) != -1
     )
+  })
+}
+
+function numberSearch(number) {
+  // only search hymnNo to avoid searching the verse numbers
+  return pagesIndex.filter((page) => {
+    return page.href.replace("/hymns/", "").search(number) != -1
   })
 }
 

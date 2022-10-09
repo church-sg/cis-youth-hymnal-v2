@@ -1,8 +1,17 @@
 {{ define "main" }}
+<div class="hero p-5 is-justify-content-center">
+  <p class="title has-text-white">
+    <span class="hl-text">CIS</span> Youth Hymnal
+  </p>
+</div>
 <section class="section">
   <main class="container">
-    Search:
-    <input class="input is-primary" id="search" type="text" />
+    <input
+      class="input is-primary m-3"
+      id="search"
+      type="text"
+      placeholder="Search"
+    />
     {{/* {{ range sort .Site.RegularPages ".File.TranslationBaseName" }} {{
     .Render "listItem" }} {{ end }} */}}
     <ul id="results"></ul>
@@ -10,7 +19,6 @@
       type="text/javascript"
       src="https://code.jquery.com/jquery-2.1.3.min.js"
     ></script>
-    <script type="text/javascript" src="js/vendor/lunr.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
   </main>
 </section>

@@ -1,2 +1,23 @@
-.header {
+html {
+  background-color: #f8f7ff;
+}
+
+#results li {
+  padding: 0px;
+}
+
+#results li a {
+  padding: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  background-color: #a496ff;
+  flex-direction: row;
+}
+
+.hl-text {
+  color: #ffec96;
 }

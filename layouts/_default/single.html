@@ -1,16 +1,17 @@
 {{ define "main" }}
 <section>
-  <div class="hero header">
-    <p>
+  <div class="hero is-justify-content-center p-5">
+    <a class="back" href="/">Back</a>
+    <p class="title has-text-white">
       <!-- TODO For responsiveness, don't show Title below certain width -->
-      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span>: {{
+      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span> - {{
       .Title }}
     </p>
   </div>
-  <div>{{.Content}}</div>
+  <div class="container">{{.Content}}</div>
 </section>
 
-<div class="container content">
+<div class="container">
   <ul>
     {{/*
     https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
