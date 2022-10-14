@@ -1,9 +1,18 @@
-html {
+html,
+body {
+  margin: 0;
+  padding: 0;
   background-color: #f8f7ff;
 }
 
+body {
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
 #results li {
-  padding: 0px;
+  padding: 0;
 }
 
 #results li a {
@@ -13,11 +22,24 @@ html {
   height: 100%;
 }
 
-.hero {
+.header {
   background-color: #a496ff;
-  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.title {
+  color: white;
+  padding: 1rem;
 }
 
 .hl-text {
   color: #ffec96;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
 }

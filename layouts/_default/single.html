@@ -1,50 +1,40 @@
-{{ define "main" }}
+{{ define "main" }} {{/*
+https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
+*/}} {{ $pages := sort (where site.RegularPages "Section" .Section)
+".File.TranslationBaseName" }}
 <section>
-  <div class="hero is-justify-content-center p-5">
-    <a class="back" href="/">Back</a>
-    <p class="title has-text-white">
+  <div class="header">
+    <a class="back" href="/"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
+    >
+    <p class="title">
       <!-- TODO For responsiveness, don't show Title below certain width -->
       Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span> - {{
       .Title }}
     </p>
   </div>
+</section>
+<section class="content">
+  {{ with $pages.Next . }}
+  <a href="{{ .Permalink }}"
+    ><span class="material-symbols-outlined"> arrow_back_ios </span>{{
+    .File.TranslationBaseName }}</a
+  >
+  {{ end }}
+
   <div class="container">{{.Content}}</div>
+  {{ with $pages.Prev . }}
+  <a href="{{ .Permalink }}"
+    >{{ .File.TranslationBaseName }}
+    <span class="material-symbols-outlined"> arrow_forward_ios </span></a
+  >
+  {{ end }}
 </section>
 
-<div class="container">
-  <ul>
-    {{/*
-    https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
-    */}} {{ $pages := sort (where site.RegularPages "Section" .Section)
-    ".File.TranslationBaseName" }} {{ with $pages.Prev . }}
-    <li>
-      Next Hymn:
-      <a class="previous" href="{{ .Permalink }}"
-        >{{ .File.TranslationBaseName }}</a
-      >
-    </li>
-    {{ end }} {{ with $pages.Next . }}
-    <li>
-      Previous Hymn:
-      <a class="next" href="{{ .Permalink }}"
-        >{{ .File.TranslationBaseName }}</a
-      >
-    </li>
-    {{ end }} {{ if ne .Params.medleyFrom 0 }}
-    <li>
-      Medleys from:
-      <a class="previous" href="{{ ref . .Params.medleyFrom }}"
-        >{{ .Params.medleyFrom }}</a
-      >
-    </li>
-    {{ end }} {{ if ne .Params.medleyTo 0 }}
-    <li>
-      Medleys to:
-      <a class="next" href="{{ ref . .Params.medleyTo }}"
-        >{{ .Params.medleyTo }}</a
-      >
-    </li>
-    {{ end }}
-  </ul>
-</div>
-{{ end }}
+{{ if ne .Params.medleyFrom 0 }} Medleys from:
+<a class="previous" href="{{ ref . .Params.medleyFrom }}"
+  >{{ .Params.medleyFrom }}</a
+>
+{{ end }} {{ if ne .Params.medleyTo 0 }} Medleys to:
+<a class="next" href="{{ ref . .Params.medleyTo }}">{{ .Params.medleyTo }}</a>
+{{ end }} {{ end }}
