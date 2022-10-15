@@ -2,29 +2,25 @@
 https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
 */}} {{ $pages := sort (where site.RegularPages "Section" .Section)
 ".File.TranslationBaseName" }}
-<section>
-  <div class="header">
-    <a class="back" href="/"
-      ><span class="material-symbols-outlined"> arrow_back </span></a
-    >
-    <p class="title">
-      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span
-      ><span class="title-text"> - {{ .Title }}</span>
-    </p>
-  </div>
-</section>
+<div class="header">
+  <a class="btn-back" href="/"
+    ><span class="material-symbols-outlined"> arrow_back </span></a
+  >
+  <p class="title">
+    Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span
+    ><span class="title-text"> - {{ .Title }}</span>
+  </p>
+</div>
 <section class="content">
   {{ with $pages.Next . }}
-  <a href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_back_ios </span>{{
-    .File.TranslationBaseName }}</a
+  <a class="btn-prev" href="{{ .Permalink }}"
+    ><span class="material-symbols-outlined"> arrow_back_ios </span></a
   >
   {{ end }}
 
-  <div class="container">{{.Content}}</div>
+  <div class="lyrics">{{.Content}}</div>
   {{ with $pages.Prev . }}
-  <a href="{{ .Permalink }}"
-    >{{ .File.TranslationBaseName }}
+  <a class="btn-next" href="{{ .Permalink }}">
     <span class="material-symbols-outlined"> arrow_forward_ios </span></a
   >
   {{ end }}
