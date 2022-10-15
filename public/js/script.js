@@ -1,7 +1,7 @@
 var $results, pagesIndex
 
 // Retrieve index file
-function initLunr() {
+async function initLunr() {
   // First retrieve the index file
   $.getJSON("./js/lunr/PagesIndex.json")
     .done(function (index) {
@@ -82,14 +82,14 @@ function renderResults(results) {
   })
 }
 
-// Let's get started
-initLunr()
-
 $(document).ready(function () {
   initUI()
 })
 
-//pre-load full list
-$(window).on("load", () => {
-  renderResults(pagesIndex)
+// Let's get started
+initLunr().then(() => {
+  //pre-load full list
+  $(window).on("load", () => {
+    renderResults(pagesIndex)
+  })
 })
