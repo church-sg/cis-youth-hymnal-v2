@@ -72,8 +72,8 @@ function renderResults(results) {
     var $result = $("<li class='box'>")
     $result.append(
       $("<a>", {
-        href: result.href,
-        text: result.href.replace("./hymns/", "") + " " + result.title,
+        href: "." + result.href, //"." to transform href to relative href "./"
+        text: result.href.replace("/hymns/", "") + " " + result.title,
         class: "title is-4",
       })
     )
