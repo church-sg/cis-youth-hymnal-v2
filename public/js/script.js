@@ -3,7 +3,7 @@ var $results, pagesIndex
 // Retrieve index file
 function initLunr() {
   // First retrieve the index file
-  $.getJSON("js/lunr/PagesIndex.json")
+  $.getJSON("./js/lunr/PagesIndex.json")
     .done(function (index) {
       pagesIndex = index
       console.log("index:", pagesIndex)

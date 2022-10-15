@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hymns on CIS Youth Hymnal</title>
-    <link>www.example.com/hymns/</link>
+    <link>localhost:1313/hymns/</link>
     <description>Recent content in Hymns on CIS Youth Hymnal</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="www.example.com/hymns/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="localhost:1313/hymns/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From the Rising of the Sun</title>
-      <link>www.example.com/hymns/69/</link>
+      <link>localhost:1313/hymns/69/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.example.com/hymns/69/</guid>
+      <guid>localhost:1313/hymns/69/</guid>
       <description>Verse 1
 From the rising of the sun,
 to the going down of the same,
@@ -29,10 +29,10 @@ Blessed be the name of the Lord,</description>
     
     <item>
       <title>I Was Made To Praise You</title>
-      <link>www.example.com/hymns/265/</link>
+      <link>localhost:1313/hymns/265/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.example.com/hymns/265/</guid>
+      <guid>localhost:1313/hymns/265/</guid>
       <description>Verse 1
 I was made to priase You,
 I was made to glorify Your name
@@ -51,10 +51,10 @@ I&amp;rsquo;ll find a chance to thank You.</description>
     
     <item>
       <title>In Christ Alone</title>
-      <link>www.example.com/hymns/311/</link>
+      <link>localhost:1313/hymns/311/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.example.com/hymns/311/</guid>
+      <guid>localhost:1313/hymns/311/</guid>
       <description>Verse 1
 In Christ alone my hope is found,
 He is my light, my strength, my song;
@@ -71,10 +71,10 @@ Fullness of God in helpless babe.</description>
     
     <item>
       <title>You Are My Strength</title>
-      <link>www.example.com/hymns/200/</link>
+      <link>localhost:1313/hymns/200/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.example.com/hymns/200/</guid>
+      <guid>localhost:1313/hymns/200/</guid>
       <description>Verse 1
 You are my strength when I am weak,
 You are the treasure that I seek,
