@@ -73,7 +73,7 @@ function renderResults(results) {
     $result.append(
       $("<a>", {
         href: result.href,
-        text: result.href.replace("/hymns/", "") + " " + result.title,
+        text: result.href.replace("./hymns/", "") + " " + result.title,
         class: "title is-4",
       })
     )
