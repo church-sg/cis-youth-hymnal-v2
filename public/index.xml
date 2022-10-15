@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CIS Youth Hymnal</title>
+    <link>www.example.com/</link>
+    <description>Recent content on CIS Youth Hymnal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From the Rising of the Sun</title>
+      <link>www.example.com/hymns/69/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>www.example.com/hymns/69/</guid>
+      <description>Verse 1
+From the rising of the sun,
+to the going down of the same,
+the Lord&amp;rsquo;s name is to be praised!
+Verse 2
+From the rising of the sun,
+to the going down of the same,
+the Lord&amp;rsquo;s name is to be praised!
+Chorus
+Praise ye the Lord!
+Praise ye all ye servants of the Lord!
+Praise the name of the Lord!
+Blessed be the name of the Lord,</description>
+    </item>
+    
+    <item>
+      <title>I Was Made To Praise You</title>
+      <link>www.example.com/hymns/265/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>www.example.com/hymns/265/</guid>
+      <description>Verse 1
+I was made to priase You,
+I was made to glorify Your name
+In every circumstance,
+To find a chance to thank You.
+I was made to love You,
+I was made to wprship at Your feet.
+And to obey You, Lord,
+I was made for You.
+Verse 2
+I will always praise You,
+I will always glorify You rname
+In every circumstance,
+I&amp;rsquo;ll find a chance to thank You.</description>
+    </item>
+    
+    <item>
+      <title>In Christ Alone</title>
+      <link>www.example.com/hymns/311/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>www.example.com/hymns/311/</guid>
+      <description>Verse 1
+In Christ alone my hope is found,
+He is my light, my strength, my song;
+This Cornerstone, this solid Ground,
+Firm through the fercest drought and storm.
+What heights of love, what depths of peace,
+when fears are stilled, when strivings cease!
+My Comforter, my All in All,
+Here in the love of Christ I stand.
+Verse 2
+In Christ Alone! Who took on flesh,
+Fullness of God in helpless babe.</description>
+    </item>
+    
+    <item>
+      <title>You Are My Strength</title>
+      <link>www.example.com/hymns/200/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>www.example.com/hymns/200/</guid>
+      <description>Verse 1
+You are my strength when I am weak,
+You are the treasure that I seek,
+You are my All in All.
+Verse 2
+Seeking you as a precious jewel,
+Lord to give up I&amp;rsquo;d be a fool,
+You are my all in all
+Chorus
+Jesus, Lamb of God, worthy is Your Name!
+Jesus, Lamb of God, worthy is Your Name!</description>
+    </item>
+    
+  </channel>
+</rss>

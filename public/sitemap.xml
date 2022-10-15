@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>www.example.com/categories/</loc>
+  </url><url>
+    <loc>www.example.com/</loc>
+  </url><url>
+    <loc>www.example.com/hymns/69/</loc>
+  </url><url>
+    <loc>www.example.com/hymns/</loc>
+  </url><url>
+    <loc>www.example.com/hymns/265/</loc>
+  </url><url>
+    <loc>www.example.com/hymns/311/</loc>
+  </url><url>
+    <loc>www.example.com/tags/</loc>
+  </url><url>
+    <loc>www.example.com/hymns/200/</loc>
+  </url>
+</urlset>
