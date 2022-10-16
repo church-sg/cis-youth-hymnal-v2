@@ -87,9 +87,9 @@ $(document).ready(function () {
 })
 
 // Let's get started
-initLunr().then(() => {
-  //pre-load full list
-  $(window).on("load", () => {
-    renderResults(pagesIndex)
+$(window).on("load", () => {
+  initLunr().then(() => {
+    //pre-load full list
+    renderResults()
   })
 })
