@@ -90,6 +90,6 @@ $(document).ready(function () {
 $(window).on("load", () => {
   initLunr().then(() => {
     //pre-load full list
-    renderResults()
+    renderResults(pagesIndex)
   })
 })
