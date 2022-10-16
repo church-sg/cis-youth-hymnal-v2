@@ -13,8 +13,11 @@
     {{/* {{ range sort .Site.RegularPages ".File.TranslationBaseName" }} {{
     .Render "listItem" }} {{ end }} */}}
     <ul id="results"></ul>
-    <script type="text/javascript" src="jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script
+      type="text/javascript"
+      src='{{ "jquery-3.6.1.min.js" | absURL }}'
+    ></script>
+    <script type="text/javascript" src='{{ "js/script.js" | absURL }}'></script>
   </main>
 </section>
 {{ end }}

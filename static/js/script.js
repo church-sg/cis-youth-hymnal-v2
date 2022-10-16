@@ -1,9 +1,9 @@
 var $results, pagesIndex
 
 // Retrieve index file
-function initLunr() {
+async function initLunr() {
   // First retrieve the index file
-  $.getJSON("js/lunr/PagesIndex.json")
+  await $.getJSON("./js/lunr/PagesIndex.json")
     .done(function (index) {
       pagesIndex = index
       console.log("index:", pagesIndex)
@@ -72,7 +72,7 @@ function renderResults(results) {
     var $result = $("<li class='box'>")
     $result.append(
       $("<a>", {
-        href: result.href,
+        href: "." + result.href, //"." to transform href to relative href "./"
         text: result.href.replace("/hymns/", "") + " " + result.title,
         class: "title is-4",
       })
@@ -82,14 +82,14 @@ function renderResults(results) {
   })
 }
 
-// Let's get started
-initLunr()
-
 $(document).ready(function () {
   initUI()
 })
 
-//pre-load full list
-$(window).on("load", () => {
-  renderResults(pagesIndex)
+// Let's get started
+initLunr().then(() => {
+  //pre-load full list
+  $(window).on("load", () => {
+    renderResults(pagesIndex)
+  })
 })

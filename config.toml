@@ -1,4 +1,5 @@
-baseURL = 'www.example.com'
+baseURL = 'https://notyumin.github.io/cis-youth-hymnal-v2/'
+# baseURL = 'localhost:1313'
 languageCode = 'en-us'
 title = 'CIS Youth Hymnal'
 staticDir = "static"
