@@ -69,12 +69,11 @@ function renderResults(results) {
 
   // Only show the ten first results
   results.slice(0, 10).forEach(function (result) {
-    var $result = $("<li class='box'>")
+    var $result = $("<li>")
     $result.append(
       $("<a>", {
         href: "." + result.href, //"." to transform href to relative href "./"
         text: result.href.replace("/hymns/", "") + " " + result.title,
-        class: "title is-4",
       })
     )
 
