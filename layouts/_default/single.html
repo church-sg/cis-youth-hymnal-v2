@@ -11,9 +11,14 @@ https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotec
     ><span class="title-text"> - {{ .Title }}</span>
   </p>
 </div>
+
 <section class="content">
   {{ with $pages.Next . }}
   <a class="btn-prev" href="{{ .Permalink }}"
+    ><span class="material-symbols-outlined"> arrow_back_ios </span></a
+  >
+  {{ else }}
+  <a class="btn-prev invisible" href="{{ .Permalink }}"
     ><span class="material-symbols-outlined"> arrow_back_ios </span></a
   >
   {{ end }}
@@ -21,6 +26,10 @@ https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotec
   <div class="lyrics">{{.Content}}</div>
   {{ with $pages.Prev . }}
   <a class="btn-next" href="{{ .Permalink }}"
+    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
+  >
+  {{ else }}
+  <a class="btn-next invisible" href="{{ .Permalink }}"
     ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
   >
   {{ end }}

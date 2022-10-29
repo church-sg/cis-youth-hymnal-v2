@@ -81,6 +81,11 @@ main {
   background-color: white;
   border-radius: 10px;
   text-align: start;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
+}
+
+.hymn-number {
+  font-weight: bold;
 }
 
 /* Lyrics Page */
@@ -166,4 +171,8 @@ main {
 .btn-prev:active,
 .btn-next:active {
   background-color: #00000011;
+}
+
+.invisible {
+  visibility: hidden;
 }
