@@ -1,10 +1,12 @@
 {{ define "main" }}
-<div class="header">
+<div class="header with-search-bar">
   <p class="title"><span class="hl-text">CIS</span> Youth Hymnal</p>
+  <div class="search-bg">
+    <input id="search" type="text" placeholder="Search" autocomplete="off" />
+  </div>
 </div>
 <section>
   <main>
-    <input id="search" type="text" placeholder="Search" autocomplete="off" />
     {{/* {{ range sort .Site.RegularPages ".File.TranslationBaseName" }} {{
     .Render "listItem" }} {{ end }} */}}
     <ul id="results"></ul>

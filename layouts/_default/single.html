@@ -15,11 +15,11 @@ https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotec
 <section class="content">
   {{ with $pages.Next . }}
   <a class="btn-prev" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_back_ios </span></a
-  >
-  {{ else }}
+    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
+  >{{/* Use Arrow Forward, then flip with CSS. Because arrow_back isn't centered
+  for some reason */}} {{ else }}
   <a class="btn-prev invisible" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_back_ios </span></a
+    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
   >
   {{ end }}
 

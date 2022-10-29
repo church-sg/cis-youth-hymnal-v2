@@ -30,6 +30,38 @@ main {
   text-align: center;
 }
 
+.header {
+  background-color: #a496ff;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+}
+
+/* Phone portrait width */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.8rem;
+  }
+}
+
+.with-search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bg {
+  position: sticky;
+  background-color: #f8f7ff;
+  top: 4.85rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 #search {
   border: none;
   margin: 1rem;
@@ -38,12 +70,14 @@ main {
   border-radius: 500px; /*Arbitrarily large number to make pill shape */
   color: black;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
+  position: sticky;
 }
 
 /* Phone portrait width */
 @media (max-width: 480px) {
   #search {
     font-size: 1.2rem;
+    top: 4.83rem;
   }
 }
 
@@ -53,20 +87,14 @@ main {
 }
 
 #search:focus {
-  outline: 0.1rem solid #a496ff;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
 }
 
 #results {
   list-style: none;
   margin: 0rem 3rem;
   padding: 0;
-}
-
-/* Phone portrait width */
-@media (max-width: 480px) {
-  #results {
-    margin: 0rem 1rem;
-  }
 }
 
 #results li {
@@ -84,28 +112,34 @@ main {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
 }
 
-.hymn-number {
-  font-weight: bold;
+@media (max-width: 480px) {
+  #results {
+    margin: 0rem 1rem;
+  }
+
+  #results li {
+    margin: 0rem 0rem 0.5rem 0rem;
+  }
+
+  #results li a {
+    padding: 1rem;
+  }
 }
 
-/* Lyrics Page */
-.header {
-  background-color: #a496ff;
-  display: flex;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 500;
-  position: sticky;
-  top: 0;
+.hymn-number {
+  font-weight: bold;
+  min-width: 2.5rem;
+  display: inline-block;
 }
 
 /* Phone portrait width */
 @media (max-width: 480px) {
-  .header {
-    font-size: 1.5rem;
+  .hymn-number {
+    min-width: 2rem;
   }
 }
 
+/* Lyrics Page */
 .btn-back {
   display: flex;
   align-items: center;
@@ -140,7 +174,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
 
 .lyrics {
@@ -148,7 +182,8 @@ main {
   border-radius: 10px;
   padding: 1rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
-  width: 40vw;
+  width: 100%;
+  max-width: 576px; /*0.3 * 1920*/
 }
 
 /* Phone portrait width */
@@ -157,6 +192,10 @@ main {
     padding: 0.5rem 1rem;
     width: 100%;
   }
+}
+
+.btn-prev {
+  transform: scaleX(-1);
 }
 
 .btn-prev,
