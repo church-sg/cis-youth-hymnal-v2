@@ -174,7 +174,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
 
 .lyrics {
@@ -192,6 +192,10 @@ main {
     padding: 0.5rem 1rem;
     width: 100%;
   }
+}
+
+.btn-prev {
+  transform: scaleX(-1);
 }
 
 .btn-prev,
