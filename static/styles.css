@@ -11,6 +11,7 @@ body {
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
     Arial, sans-serif;
   font-size: 1.4rem;
+  height: 100vh;
 }
 
 /* Phone portrait width */
@@ -38,6 +39,11 @@ main {
   font-weight: 500;
   position: sticky;
   top: 0;
+}
+
+.header ::selection {
+  background: #ffec96;
+  color: #a496ff;
 }
 
 /* Phone portrait width */
@@ -81,7 +87,7 @@ main {
   }
 }
 
-::placeholder {
+#search::placeholder {
   color: darkgray;
   font-style: italic;
 }
@@ -95,10 +101,17 @@ main {
   list-style: none;
   margin: 0rem 3rem;
   padding: 0;
+  padding-bottom: 0.5rem;
 }
 
 #results li {
-  margin: 0rem 0rem 1rem 0rem;
+  margin: 0rem 0rem 0.75rem 0rem;
+  display: flex;
+  justify-content: center;
+}
+
+#results li ::selection {
+  background: #ffec96;
 }
 
 #results li a {
@@ -110,6 +123,8 @@ main {
   border-radius: 10px;
   text-align: start;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
+  max-width: 576px; /*0.3 * 1920*/
+  width: 100%;
 }
 
 @media (max-width: 480px) {
@@ -175,6 +190,7 @@ main {
   flex-direction: row;
   justify-content: center;
   margin: 1rem 0rem;
+  height: 87.5%; /*TODO: there must be some way to make this dynamic */
 }
 
 .lyrics {
@@ -184,6 +200,28 @@ main {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   width: 100%;
   max-width: 576px; /*0.3 * 1920*/
+  overflow-y: scroll;
+}
+
+.lyrics::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lyrics::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.lyrics::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 500px;
+}
+
+.lyrics::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.lyrics ::selection {
+  background: #ffec96;
 }
 
 /* Phone portrait width */

@@ -7,7 +7,7 @@ This site is meant to be a successor to the reliable but (in my opinion) outdate
 - 🔍 Search hymns by number, title or lyrics
 - ✨ Responsive layout for both Mobile and Desktop
 - 📖 "Flip" through hymns with previous/next buttons
-- ⏭️ Navigate directly to respective medleys from each hymn's page (Coming soon)
+- ⏭️ Navigate directly to respective medleys from each hymn's page (Coming Soon!)
 - 🌙 Option of Light/Dark mode (Coming Soon!)
 
 ## Tools/Dependencies
