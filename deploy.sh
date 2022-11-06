@@ -11,7 +11,7 @@ then
     git commit -m "Edit .gitignore to publish"
 
     # push "public" to gh-pages branch
-    git subtree push --prefix public origin gh-pages
+    git push origin `git subtree split --prefix public origin`:gh-pages --force
     git reset HEAD~
     git checkout .gitignore
 else
