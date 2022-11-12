@@ -12,6 +12,7 @@ body {
     Arial, sans-serif;
   font-size: 1.4rem;
   height: 100vh;
+  height: var(--vh);
 }
 
 /* Phone portrait width */
@@ -159,7 +160,7 @@ main {
 .box {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 .btn-back {
