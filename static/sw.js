@@ -11,8 +11,16 @@ const cacheFirst = async (request) => {
   return fetch(request);
 };
 
+const networkFirst = async (request) => {
+  try {
+    return fetch(request);
+  } catch (err) {
+    return caches.match(request);
+  }
+};
+
 self.addEventListener("fetch", (event) => {
-  event.respondWith(cacheFirst(event.request));
+  event.respondWith(networkFirst(event.request));
 });
 
 self.addEventListener("install", (event) => {
