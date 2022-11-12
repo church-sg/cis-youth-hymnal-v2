@@ -12,6 +12,7 @@ body {
     Arial, sans-serif;
   font-size: 1.4rem;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Phone portrait width */

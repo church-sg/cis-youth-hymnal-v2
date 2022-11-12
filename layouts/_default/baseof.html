@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    {{/*
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    */}}
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href='{{ "styles.css" | absURL }}' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ block "title" .}} {{ .Site.Title }} {{ end }}</title>
-  </head>
-  <body>
-    {{ block "main" . }}
-    <!-- The part of the page that begins to differ between templates -->
-    {{ end }}
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" type="image/png" sizes="196x196" href='{{ "icons/favicon-196.png" | absURL }}' />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href='{{ "styles.css" | absURL }}' />
+  <link rel="manifest" href='{{ "manifest.json" | absURL }}' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ block "title" .}} {{ .Site.Title }} {{ end }}</title>
+</head>
+
+<body>
+  {{ block "main" . }}
+  <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+</body>
+
 </html>
