@@ -2,43 +2,35 @@
 https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
 */}} {{ $pages := sort (where site.RegularPages "Section" .Section)
 ".File.TranslationBaseName" }}
-<div class="header">
-  <a class="btn-back" href="../../"
-    ><span class="material-symbols-outlined"> arrow_back </span></a
-  >
-  <p class="title">
-    Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span
-    ><span class="title-text"> - {{ .Title }}</span>
-  </p>
+<div class="box">
+  <div class="header">
+    <a class="btn-back" href="../../"><span class="material-symbols-outlined"> arrow_back </span></a>
+    <p class="title">
+      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span><span class="title-text"> - {{ .Title }}</span>
+    </p>
+  </div>
+
+  <section class="content">
+    {{ with $pages.Next . }}
+    <a class="btn-prev" href="{{ .Permalink }}"><span class="material-symbols-outlined"> arrow_forward_ios
+      </span></a>{{/* Use Arrow Forward, then flip with CSS. Because arrow_back isn't
+    centered for some reason */}} {{ else }}
+    <a class="btn-prev invisible" href="{{ .Permalink }}"><span class="material-symbols-outlined"> arrow_forward_ios
+      </span></a>
+    {{ end }}
+
+    <div class="lyrics">{{.Content}}</div>
+    {{ with $pages.Prev . }}
+    <a class="btn-next" href="{{ .Permalink }}"><span class="material-symbols-outlined"> arrow_forward_ios </span></a>
+    {{ else }}
+    <a class="btn-next invisible" href="{{ .Permalink }}"><span class="material-symbols-outlined"> arrow_forward_ios
+      </span></a>
+    {{ end }}
+  </section>
 </div>
 
-<section class="content">
-  {{ with $pages.Next . }}
-  <a class="btn-prev" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
-  >{{/* Use Arrow Forward, then flip with CSS. Because arrow_back isn't centered
-  for some reason */}} {{ else }}
-  <a class="btn-prev invisible" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
-  >
-  {{ end }}
-
-  <div class="lyrics">{{.Content}}</div>
-  {{ with $pages.Prev . }}
-  <a class="btn-next" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
-  >
-  {{ else }}
-  <a class="btn-next invisible" href="{{ .Permalink }}"
-    ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
-  >
-  {{ end }}
-</section>
-
 {{ if ne .Params.medleyFrom 0 }} Medleys from:
-<a class="previous" href="{{ ref . .Params.medleyFrom }}"
-  >{{ .Params.medleyFrom }}</a
->
+<a class="previous" href="{{ ref . .Params.medleyFrom }}">{{ .Params.medleyFrom }}</a>
 {{ end }} {{ if ne .Params.medleyTo 0 }} Medleys to:
 <a class="next" href="{{ ref . .Params.medleyTo }}">{{ .Params.medleyTo }}</a>
 {{ end }} {{ end }}

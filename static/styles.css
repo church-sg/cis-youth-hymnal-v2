@@ -12,7 +12,6 @@ body {
     Arial, sans-serif;
   font-size: 1.4rem;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* Phone portrait width */
@@ -33,6 +32,7 @@ main {
 }
 
 .header {
+  flex: 0 1 auto;
   background-color: #a496ff;
   display: flex;
   justify-content: center;
@@ -156,6 +156,12 @@ main {
 }
 
 /* Lyrics Page */
+.box {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .btn-back {
   display: flex;
   align-items: center;
@@ -187,11 +193,13 @@ main {
 }
 
 .content {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 1rem 0rem;
-  height: 87.5%; /*TODO: there must be some way to make this dynamic */
+  height: 0; /* No clue how this works: https://stackoverflow.com/questions/14962468/how-can-i-combine-flexbox-and-vertical-scroll-in-a-full-height-app */
+  /* height: 87.5%; /*TODO: there must be some way to make this dynamic */
 }
 
 .lyrics {
