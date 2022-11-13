@@ -3,16 +3,15 @@ const addResourcesToCache = async (resources) => {
   await cache.addAll(resources);
 };
 
-const cacheFirst = async (request) => {
-  const responseFromCache = await caches.match(request);
-  if (responseFromCache) {
-    return responseFromCache;
-  }
-  return fetch(request);
+const putInCache = async (request, response) => {
+  const cache = await caches.open("v1");
+  await cache.put(request, response);
 };
 
 const networkFirst = async (request) => {
   try {
+    const response = await fetch(request);
+    putInCache(response.clone());
     return fetch(request);
   } catch (err) {
     return caches.match(request);
@@ -28,6 +27,7 @@ self.addEventListener("install", (event) => {
     addResourcesToCache([
       "/cis-youth-hymnal-v2/",
       "/cis-youth-hymnal-v2/js/script.js",
+      "/cis-youth-hymnal-v2/js/resize.js",
       "/cis-youth-hymnal-v2/hymns/1/",
       "/cis-youth-hymnal-v2/hymns/10/",
       "/cis-youth-hymnal-v2/hymns/151/",
