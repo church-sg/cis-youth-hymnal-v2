@@ -48,6 +48,10 @@ main {
   color: #a496ff;
 }
 
+.header input::selection {
+  color: black;
+}
+
 /* Phone portrait width */
 @media (max-width: 480px) {
   .header {
@@ -129,6 +133,13 @@ main {
   width: 100%;
 }
 
+#results li a:hover {
+  box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
+  background-color: #a496ff;
+  color: white;
+  font-weight: 500;
+}
+
 @media (max-width: 480px) {
   #results {
     margin: 0rem 1rem;
@@ -147,6 +158,10 @@ main {
   font-weight: bold;
   min-width: 2.5rem;
   display: inline-block;
+}
+
+#results li a:hover .hymn-number {
+  color: #ffec96;
 }
 
 /* Phone portrait width */
