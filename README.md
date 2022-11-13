@@ -5,8 +5,9 @@ This site is meant to be a successor to the reliable but (in my opinion) outdate
 ## Features
 
 - 🔍 Search hymns by number, title or lyrics
-- ✨ Responsive layout for both Mobile and Desktop
+- 📱 Responsive layout for both Mobile and Desktop
 - 📖 "Flip" through hymns with previous/next buttons
+- ⬇️ Can be installed and/or viewed offline because it's a [PWA](https://en.wikipedia.org/wiki/Progressive_web_app)!
 - ⏭️ Navigate directly to respective medleys from each hymn's page (Coming Soon!)
 - 🌙 Option of Light/Dark mode (Coming Soon!)
 
