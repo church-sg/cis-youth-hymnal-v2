@@ -25,9 +25,11 @@ self.addEventListener("fetch", (event) => {
 self.addEventListener("install", (event) => {
   event.waitUntil(
     addResourcesToCache([
+      // Root route and scripts
       "/cis-youth-hymnal-v2/",
       "/cis-youth-hymnal-v2/js/script.js",
       "/cis-youth-hymnal-v2/js/resize.js",
+      // Hymns
       "/cis-youth-hymnal-v2/hymns/1/",
       "/cis-youth-hymnal-v2/hymns/10/",
       "/cis-youth-hymnal-v2/hymns/151/",
