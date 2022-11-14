@@ -131,6 +131,10 @@ main {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   max-width: 576px; /*0.3 * 1920*/
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #results li a:hover {
