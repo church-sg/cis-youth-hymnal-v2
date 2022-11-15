@@ -5,6 +5,7 @@
 - [Development](#development)
   - [Table of Contents](#table-of-contents)
   - [Codebase Walkthrough](#codebase-walkthrough)
+    - [Branches](#branches)
     - [Hymns](#hymns)
     - [Layouts](#layouts)
     - [Static Files](#static-files)
