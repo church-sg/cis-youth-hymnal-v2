@@ -17,6 +17,16 @@
 
 ## Codebase Walkthrough
 
+### Branches
+
+There are 2 branches in the repo as of now: `main` and `gh-pages`.
+
+`main` contains all the development code, while `gh-pages` contains the code
+being served live on [https://notyumin.github.io/cis-youth-hymnal-v2](https://notyumin.github.io/cis-youth-hymnal-v2)
+via Github Pages.
+
+A third `development` branch might be added in the future if necessary.
+
 ### Hymns
 
 The hymn lyrics can be found in the [content directory](./content/hymns/).
@@ -49,7 +59,7 @@ You are my All in All.
 ### Layouts
 
 The HTML layouts can be found in the [layouts directory](./layouts/).
-The layouts are written in HTMl, with [Hugo's templating syntax](https://gohugo.io/templates/introduction/).
+The layouts are written in HTML, with [Hugo's templating syntax](https://gohugo.io/templates/introduction/).
 
 ### Static Files
 
