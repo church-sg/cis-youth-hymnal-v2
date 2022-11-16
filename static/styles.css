@@ -137,11 +137,20 @@ main {
   overflow: hidden;
 }
 
-#results li a:hover {
+#results li a:active{
   box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   background-color: #a496ff;
   color: white;
   font-weight: 500;
+}
+
+@media (hover: hover) {
+  #results li a:hover {
+    box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
+    background-color: #a496ff;
+    color: white;
+    font-weight: 500;
+  }
 }
 
 @media (max-width: 480px) {
@@ -164,8 +173,14 @@ main {
   display: inline-block;
 }
 
-#results li a:hover .hymn-number {
+#results li a:active .hymn-number{
   color: #ffec96;
+}
+
+@media (hover: hover) {
+  #results li a:hover .hymn-number {
+    color: #ffec96;
+  }
 }
 
 /* Phone portrait width */
