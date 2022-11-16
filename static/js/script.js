@@ -21,7 +21,8 @@ function initUI() {
   $("#search").keyup(function() {
     $results.empty();
 
-    var query = $(this).val();
+    var query = $(this).val().replace(/[^\w\s\']|_/g, "")
+      .replace(/\s+/g, " "); //https://stackoverflow.com/a/4328546
     var results;
     if (isNaN(parseInt(query))) {
       //if query is words
