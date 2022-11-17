@@ -137,7 +137,7 @@ main {
   overflow: hidden;
 }
 
-#results li a:active{
+#results li a:active {
   box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   background-color: #a496ff;
   color: white;
@@ -173,7 +173,7 @@ main {
   display: inline-block;
 }
 
-#results li a:active .hymn-number{
+#results li a:active .hymn-number {
   color: #ffec96;
 }
 
@@ -282,6 +282,7 @@ main {
 
 .btn-prev,
 .btn-next {
+  color: black;
   display: flex;
   align-items: center;
   padding: 0.3rem;
