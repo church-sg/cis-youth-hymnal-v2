@@ -1,71 +1,71 @@
-var yaml = require("yamljs")
-var S = require("string")
+var yaml = require("yamljs");
+var S = require("string");
 
-var CONTENT_PATH_PREFIX = "content"
+var CONTENT_PATH_PREFIX = "content";
 
-module.exports = function (grunt) {
-  grunt.registerTask("lunr-index", function () {
-    grunt.log.writeln("Build pages index")
+module.exports = function(grunt) {
+  grunt.registerTask("lunr-index", function() {
+    grunt.log.writeln("Build pages index");
 
-    var indexPages = function () {
-      var pagesIndex = []
+    var indexPages = function() {
+      var pagesIndex = [];
       grunt.file.recurse(
         CONTENT_PATH_PREFIX,
-        function (abspath, rootdir, subdir, filename) {
-          grunt.verbose.writeln("Parse file:", abspath)
-          pagesIndex.push(processFile(abspath, filename))
+        function(abspath, rootdir, subdir, filename) {
+          grunt.verbose.writeln("Parse file:", abspath);
+          pagesIndex.push(processFile(abspath, filename));
         }
-      )
+      );
 
       //sort pages index by hymn number
       var sortedPagesIndex = pagesIndex.sort((a, b) => {
-        var aHymnNo = a.href.replace("/hymns/", "")
-        var bHymnNo = b.href.replace("/hymns/", "")
-        return parseInt(aHymnNo) - parseInt(bHymnNo)
-      })
+        var aHymnNo = a.href.replace("/hymns/", "");
+        var bHymnNo = b.href.replace("/hymns/", "");
+        return parseInt(aHymnNo) - parseInt(bHymnNo);
+      });
 
-      return sortedPagesIndex
-    }
+      return sortedPagesIndex;
+    };
 
-    var processFile = function (abspath, filename) {
-      var pageIndex
+    var processFile = function(abspath, filename) {
+      var pageIndex;
 
       if (S(filename).endsWith(".html")) {
-        pageIndex = processHTMLFile(abspath, filename)
+        pageIndex = processHTMLFile(abspath, filename);
       } else {
-        pageIndex = processMDFile(abspath, filename)
+        pageIndex = processMDFile(abspath, filename);
       }
 
-      return pageIndex
-    }
+      return pageIndex;
+    };
 
-    var processHTMLFile = function (abspath, filename) {
-      var content = grunt.file.read(abspath)
-      var pageName = S(filename).chompRight(".html").s
-      var href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).s
+    var processHTMLFile = function(abspath, filename) {
+      var content = grunt.file.read(abspath);
+      var pageName = S(filename).chompRight(".html").s;
+      var href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).s;
       return {
         title: pageName,
         href: href,
         content: S(content).trim().stripTags().stripPunctuation().s,
-      }
-    }
+      };
+    };
 
-    var processMDFile = function (abspath, filename) {
-      var content = grunt.file.read(abspath)
-      var pageIndex
+    var processMDFile = function(abspath, filename) {
+      var content = grunt.file.read(abspath);
+      var pageIndex;
       // First separate the Front Matter from the content and parse it
-      content = content.split("---")
-      var frontMatter
+      content = content.split("---");
+      var frontMatter;
       try {
-        frontMatter = yaml.parse(content[1].trim())
+        frontMatter = yaml.parse(content[1].trim());
       } catch (e) {
-        console.failed(e.message)
+        console.failed(e.message);
       }
 
-      var href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).chompRight(".md").s
+      var href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).chompRight(".md").s;
       // href for index.md files stops at the folder name
       if (filename === "index.md") {
-        href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).chompRight(filename).s
+        href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).chompRight(filename).s;
       }
 
       // Build Lunr index for this page
@@ -74,16 +74,20 @@ module.exports = function (grunt) {
         medlyFrom: frontMatter.medleyFrom,
         medlyTo: frontMatter.medleyTo,
         href: href,
-        content: S(content[2]).trim().stripTags().stripPunctuation().s,
-      }
+        content: S(content[2])
+          .trim()
+          .stripTags()
+          .replace(/[^\w\s]|_/g, "")
+          .replace(/\s+/g, " ").s,
+      };
 
-      return pageIndex
-    }
+      return pageIndex;
+    };
 
     grunt.file.write(
       "static/js/lunr/PagesIndex.json",
       JSON.stringify(indexPages())
-    )
-    grunt.log.ok("Index built")
-  })
-}
+    );
+    grunt.log.ok("Index built");
+  });
+};
