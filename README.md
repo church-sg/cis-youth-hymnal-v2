@@ -1,6 +1,6 @@
 # CIS Youth Hymnal
 
-This site is meant to be a successor to the reliable but (in my opinion) outdated CIS Youth Hymnal mobile app.
+This site is meant to be a successor to the reliable but (in my opinion) outdated CIS Youth Hymnal mobile app. It is also accessible through https://youthhymns.church.org.sg (accelerated through Cloudflare CDN utilizing Brotli, HTTP/3, QUIC)
 
 ## Features
 
