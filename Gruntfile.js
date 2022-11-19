@@ -3,15 +3,15 @@ var S = require("string");
 
 var CONTENT_PATH_PREFIX = "content";
 
-module.exports = function(grunt) {
-  grunt.registerTask("lunr-index", function() {
+module.exports = function (grunt) {
+  grunt.registerTask("lunr-index", function () {
     grunt.log.writeln("Build pages index");
 
-    var indexPages = function() {
+    var indexPages = function () {
       var pagesIndex = [];
       grunt.file.recurse(
         CONTENT_PATH_PREFIX,
-        function(abspath, rootdir, subdir, filename) {
+        function (abspath, rootdir, subdir, filename) {
           grunt.verbose.writeln("Parse file:", abspath);
           pagesIndex.push(processFile(abspath, filename));
         }
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       return sortedPagesIndex;
     };
 
-    var processFile = function(abspath, filename) {
+    var processFile = function (abspath, filename) {
       var pageIndex;
 
       if (S(filename).endsWith(".html")) {
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       return pageIndex;
     };
 
-    var processHTMLFile = function(abspath, filename) {
+    var processHTMLFile = function (abspath, filename) {
       var content = grunt.file.read(abspath);
       var pageName = S(filename).chompRight(".html").s;
       var href = S(abspath).chompLeft(CONTENT_PATH_PREFIX).s;
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       };
     };
 
-    var processMDFile = function(abspath, filename) {
+    var processMDFile = function (abspath, filename) {
       var content = grunt.file.read(abspath);
       var pageIndex;
       // First separate the Front Matter from the content and parse it
@@ -84,10 +84,7 @@ module.exports = function(grunt) {
       return pageIndex;
     };
 
-    grunt.file.write(
-      "static/js/lunr/PagesIndex.json",
-      JSON.stringify(indexPages())
-    );
+    grunt.file.write("static/js/PagesIndex.json", JSON.stringify(indexPages()));
     grunt.log.ok("Index built");
   });
 };
