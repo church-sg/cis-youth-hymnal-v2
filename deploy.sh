@@ -6,7 +6,7 @@ if [[ $STATUS == *"nothing to commit, working tree clean"* ]]
 then
     hugo # build using hugo
     # add CNAME to public/
-    echo "youthhymns.church.org.sg" >> public/CNAME
+    echo "youthhymns.church.org.sg" > public/CNAME
     git add public/ -f # force add public/ (cuz it's ignored)
     git commit -m "Commit to deploy"
     git push origin `git subtree split --prefix public main`:gh-pages --force
