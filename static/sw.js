@@ -35,6 +35,7 @@ self.addEventListener("install", (event) => {
       "/hymns/110/",
       "/hymns/151/",
       "/hymns/155/",
+      "/hymns/159/",
       "/hymns/16/",
       "/hymns/161/",
       "/hymns/163/",
