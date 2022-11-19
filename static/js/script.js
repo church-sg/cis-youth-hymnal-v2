@@ -1,16 +1,16 @@
 var $results, pagesIndex;
 
 // Retrieve index file
-async function initLunr() {
+async function getPagesIndex() {
   // First retrieve the index file
-  return $.getJSON("./js/lunr/PagesIndex.json")
-    .done(function(index) {
+  return $.getJSON("./js/PagesIndex.json")
+    .done(function (index) {
       pagesIndex = index;
       console.log("index:", pagesIndex);
     })
-    .fail(function(jqxhr, textStatus, error) {
+    .fail(function (jqxhr, textStatus, error) {
       var err = textStatus + ", " + error;
-      console.error("Error getting Hugo index file:", err);
+      console.error("Error getting index file:", err);
     });
 }
 
@@ -18,7 +18,7 @@ async function initLunr() {
 function initUI() {
   $results = $("#results");
 
-  $("#search").keyup(function() {
+  $("#search").keyup(function () {
     $results.empty();
 
     var query = $(this)
@@ -69,7 +69,7 @@ function renderResults(results) {
   if (!results.length) return;
 
   // Show results
-  results.forEach(function(result) {
+  results.forEach(function (result) {
     var $result = $("<li>");
     $result.append(
       $("<a>", {
@@ -89,25 +89,25 @@ function renderResults(results) {
 async function registerSW() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-      .register("/cis-youth-hymnal-v2/sw.js", {
-        scope: "/cis-youth-hymnal-v2/",
+      .register("/sw.js", {
+        scope: "/",
       })
-      .then(function(registration) {
+      .then(function (registration) {
         console.log("Service Worker Registered");
       });
 
-    navigator.serviceWorker.ready.then(function(registration) {
+    navigator.serviceWorker.ready.then(function (registration) {
       console.log("Service Worker Ready");
     });
   }
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   initUI();
 });
 
 $(window).on("load", () => {
-  initLunr().then(() => {
+  getPagesIndex().then(() => {
     //pre-load full list
     renderResults(pagesIndex);
   });

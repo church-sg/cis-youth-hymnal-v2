@@ -23,7 +23,7 @@
 There are 2 branches in the repo as of now: `main` and `gh-pages`.
 
 `main` contains all the development code, while `gh-pages` contains the code
-being served live on [https://notyumin.github.io/cis-youth-hymnal-v2](https://notyumin.github.io/cis-youth-hymnal-v2)
+being served live on [https://youthhymns.church.org.sg](https://youthhymns.church.org.sg)
 via Github Pages.
 
 A third `development` branch might be added in the future if necessary.
@@ -68,13 +68,16 @@ Static files such as icons, CSS and scripts can be found in the [static director
 
 ### Scripts
 
-The few important scripts used are:
+For development, there is a script for generating the base
+template of a hymn file: [newHymn.sh](./newHymn.sh)
+
+For deployment, the few important scripts used are:
 
 - [Gruntfile.js](./Gruntfile.js)
 - [generateCache.js](./generateCache.js)
 - [deploy.sh](./deploy.sh)
 
-These are all used for deployment, and will be explained further in the
+These will be explained further in the
 [deployment section below](#deployment)
 
 ## Deployment
@@ -106,13 +109,13 @@ node generateCache.js
 which will print an output that looks like this:
 
 ```
-"/cis-youth-hymnal-v2/hymns/1/",
-"/cis-youth-hymnal-v2/hymns/10/",
-"/cis-youth-hymnal-v2/hymns/151/",
+"/hymns/1/",
+"/10/",
+"/151/",
 ...
-"/cis-youth-hymnal-v2/hymns/69/",
-"/cis-youth-hymnal-v2/hymns/81/",
-"/cis-youth-hymnal-v2/hymns/99/",
+"/69/",
+"/81/",
+"/99/",
 ```
 
 Copy the whole output and paste it as a parameter in the `addResourcesToCache` function call:
@@ -120,16 +123,16 @@ Copy the whole output and paste it as a parameter in the `addResourcesToCache` f
 ```
     ...
     addResourcesToCache([
-      "/cis-youth-hymnal-v2/",
-      "/cis-youth-hymnal-v2/js/script.js",
-      "/cis-youth-hymnal-v2/js/resize.js",
-      "/cis-youth-hymnal-v2/hymns/1/",
-      "/cis-youth-hymnal-v2/hymns/10/",
-      "/cis-youth-hymnal-v2/hymns/151/",
+      "/",
+      "/js/script.js",
+      "/js/resize.js",
+      "/hymns/1/",
+      "/hymns/10/",
+      "/hymns/151/",
       ...
-      "/cis-youth-hymnal-v2/hymns/69/",
-      "/cis-youth-hymnal-v2/hymns/81/",
-      "/cis-youth-hymnal-v2/hymns/99/",
+      "/hymns/69/",
+      "/hymns/81/",
+      "/hymns/99/",
     ])
     ...
 ```
@@ -167,4 +170,4 @@ bash deploy.sh
 > [deploy.sh](./deploy.sh) runs the `hugo` command to build the project into the `public/` directory,
 > then does some Git magic to push it to the `gh-pages` branch without messing up the main branch
 
-That's all! Now you can head over to [notyumin.github.io/cis-youth-hymnal-v2](https://notyumin.github.io/cis-youth-hymnal-v2) to view the changes.
+That's all! Now you can head over to [https://youthhymns.church.org.sg](https://youthhymns.church.org.sg) to view the changes.

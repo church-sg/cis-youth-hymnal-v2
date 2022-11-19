@@ -9,5 +9,5 @@ const hymnNos = hymnFileNames.map((fileName) => {
 });
 
 hymnNos.forEach((hymnNo) => {
-  console.log(`"/cis-youth-hymnal-v2/hymns/${hymnNo}/",`);
+  console.log(`"/hymns/${hymnNo}/",`);
 });
