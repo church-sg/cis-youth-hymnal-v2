@@ -1,26 +1,26 @@
 const addResourcesToCache = async (resources) => {
-  const cache = await caches.open("v1");
-  await cache.addAll(resources);
-};
+  const cache = await caches.open("v1")
+  await cache.addAll(resources)
+}
 
 const putInCache = async (request, response) => {
-  const cache = await caches.open("v1");
-  await cache.put(request, response);
-};
+  const cache = await caches.open("v1")
+  await cache.put(request, response)
+}
 
 const networkFirst = async (request) => {
   try {
-    const response = await fetch(request);
-    putInCache(request, response.clone());
-    return fetch(request);
+    const response = await fetch(request)
+    putInCache(request, response.clone())
+    return fetch(request)
   } catch (err) {
-    return caches.match(request);
+    return caches.match(request)
   }
-};
+}
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(networkFirst(event.request));
-});
+  event.respondWith(networkFirst(event.request))
+})
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -48,6 +48,7 @@ self.addEventListener("install", (event) => {
       "/hymns/24/",
       "/hymns/245/",
       "/hymns/246/",
+      "/hymns/253/",
       "/hymns/255/",
       "/hymns/256/",
       "/hymns/264/",
@@ -92,5 +93,5 @@ self.addEventListener("install", (event) => {
       "/hymns/90/",
       "/hymns/99/",
     ])
-  );
-});
+  )
+})
