@@ -1,26 +1,26 @@
 const addResourcesToCache = async (resources) => {
-  const cache = await caches.open("v1")
-  await cache.addAll(resources)
-}
+  const cache = await caches.open("v1");
+  await cache.addAll(resources);
+};
 
 const putInCache = async (request, response) => {
-  const cache = await caches.open("v1")
-  await cache.put(request, response)
-}
+  const cache = await caches.open("v1");
+  await cache.put(request, response);
+};
 
 const networkFirst = async (request) => {
   try {
-    const response = await fetch(request)
-    putInCache(request, response.clone())
-    return fetch(request)
+    const response = await fetch(request);
+    putInCache(request, response.clone());
+    return fetch(request);
   } catch (err) {
-    return caches.match(request)
+    return caches.match(request);
   }
-}
+};
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(networkFirst(event.request))
-})
+  event.respondWith(networkFirst(event.request));
+});
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -30,69 +30,74 @@ self.addEventListener("install", (event) => {
       "/js/script.js",
       "/js/resize.js",
       // Hymns
-      "/hymns/1/",
-      "/hymns/10/",
-      "/hymns/110/",
-      "/hymns/151/",
-      "/hymns/155/",
-      "/hymns/159/",
-      "/hymns/16/",
-      "/hymns/161/",
-      "/hymns/163/",
-      "/hymns/164/",
-      "/hymns/173/",
-      "/hymns/175/",
-      "/hymns/194/",
-      "/hymns/200/",
-      "/hymns/202/",
-      "/hymns/223/",
-      "/hymns/24/",
-      "/hymns/245/",
-      "/hymns/246/",
-      "/hymns/253/",
-      "/hymns/255/",
-      "/hymns/256/",
-      "/hymns/264/",
-      "/hymns/265/",
-      "/hymns/268/",
-      "/hymns/269/",
-      "/hymns/274/",
-      "/hymns/276/",
-      "/hymns/278/",
-      "/hymns/281/",
-      "/hymns/282/",
-      "/hymns/285/",
-      "/hymns/296/",
-      "/hymns/297/",
-      "/hymns/298/",
-      "/hymns/3/",
-      "/hymns/301/",
-      "/hymns/304/",
-      "/hymns/305/",
-      "/hymns/309/",
-      "/hymns/31/",
-      "/hymns/311/",
-      "/hymns/312/",
-      "/hymns/32/",
-      "/hymns/39/",
-      "/hymns/41/",
-      "/hymns/43/",
-      "/hymns/48/",
-      "/hymns/53/",
-      "/hymns/55/",
-      "/hymns/58/",
-      "/hymns/61/",
-      "/hymns/66/",
-      "/hymns/69/",
-      "/hymns/7/",
-      "/hymns/72/",
-      "/hymns/75/",
-      "/hymns/81/",
-      "/hymns/82/",
-      "/hymns/83/",
-      "/hymns/87/",
-      "/hymns/90/",
-      "/hymns/99/",
+      "/chinese/46/",
+      "/chinese/49/",
+      "/chinese/50/",
+      "/chinese/52/",
+      "/chinese/71/",
+      "/english/1/",
+      "/english/10/",
+      "/english/110/",
+      "/english/151/",
+      "/english/155/",
+      "/english/159/",
+      "/english/16/",
+      "/english/161/",
+      "/english/163/",
+      "/english/164/",
+      "/english/173/",
+      "/english/175/",
+      "/english/194/",
+      "/english/200/",
+      "/english/202/",
+      "/english/223/",
+      "/english/24/",
+      "/english/245/",
+      "/english/246/",
+      "/english/253/",
+      "/english/255/",
+      "/english/256/",
+      "/english/264/",
+      "/english/265/",
+      "/english/268/",
+      "/english/269/",
+      "/english/274/",
+      "/english/276/",
+      "/english/278/",
+      "/english/281/",
+      "/english/282/",
+      "/english/285/",
+      "/english/296/",
+      "/english/297/",
+      "/english/298/",
+      "/english/3/",
+      "/english/301/",
+      "/english/304/",
+      "/english/305/",
+      "/english/309/",
+      "/english/31/",
+      "/english/311/",
+      "/english/312/",
+      "/english/32/",
+      "/english/39/",
+      "/english/41/",
+      "/english/43/",
+      "/english/48/",
+      "/english/53/",
+      "/english/55/",
+      "/english/58/",
+      "/english/61/",
+      "/english/66/",
+      "/english/69/",
+      "/english/7/",
+      "/english/72/",
+      "/english/75/",
+      "/english/81/",
+      "/english/82/",
+      "/english/83/",
+      "/english/87/",
+      "/english/90/",
+      "/english/99/",
     ])
-  )
-})
+  );
+});

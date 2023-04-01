@@ -8,23 +8,38 @@ module.exports = function (grunt) {
     grunt.log.writeln("Build pages index");
 
     var indexPages = function () {
-      var pagesIndex = [];
+      var englishIndex = [];
       grunt.file.recurse(
-        CONTENT_PATH_PREFIX,
+        CONTENT_PATH_PREFIX + "/english",
         function (abspath, rootdir, subdir, filename) {
           grunt.verbose.writeln("Parse file:", abspath);
-          pagesIndex.push(processFile(abspath, filename));
+          englishIndex.push(processFile(abspath, filename));
+        }
+      );
+
+      var chineseIndex = [];
+      grunt.file.recurse(
+        CONTENT_PATH_PREFIX + "/chinese",
+        function (abspath, rootdir, subdir, filename) {
+          grunt.verbose.writeln("Parse file:", abspath);
+          chineseIndex.push(processFile(abspath, filename));
         }
       );
 
       //sort pages index by hymn number
-      var sortedPagesIndex = pagesIndex.sort((a, b) => {
-        var aHymnNo = a.href.replace("/hymns/", "");
-        var bHymnNo = b.href.replace("/hymns/", "");
+      var sortedEnglishIndex = englishIndex.sort((a, b) => {
+        var aHymnNo = a.href.replace("/english/", "");
+        var bHymnNo = b.href.replace("/english/", "");
         return parseInt(aHymnNo) - parseInt(bHymnNo);
       });
 
-      return sortedPagesIndex;
+      var sortedChineseIndex = chineseIndex.sort((a, b) => {
+        var aHymnNo = a.href.replace("/chinese/", "");
+        var bHymnNo = b.href.replace("/chinese/", "");
+        return parseInt(aHymnNo) - parseInt(bHymnNo);
+      });
+
+      return { english: sortedEnglishIndex, chinese: sortedChineseIndex };
     };
 
     var processFile = function (abspath, filename) {
@@ -74,11 +89,7 @@ module.exports = function (grunt) {
         medlyFrom: frontMatter.medleyFrom,
         medlyTo: frontMatter.medleyTo,
         href: href,
-        content: S(content[2])
-          .trim()
-          .stripTags()
-          .replace(/[^\w\s]|_/g, "")
-          .replace(/\s+/g, " ").s,
+        content: S(content[2]).trim().stripTags().replace(/\s+/g, " ").s,
       };
 
       return pageIndex;

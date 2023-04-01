@@ -28,9 +28,35 @@ via Github Pages.
 
 A third `development` branch might be added in the future if necessary.
 
+### File Structure Overview
+
+```
+├───archetypes
+├───content
+│   ├───chinese
+│   └───english
+├───layouts
+│   └───_default
+├───node_modules
+├───public
+├───resources
+└───static
+    ├───icons
+    └───js
+```
+
+The `archetypes`, `node_modules`, `resources` and `public` directories can be ignored for general
+development purposes.
+
+`content` contains the Markdown files for the hymn lyrics.
+
+`layouts` contains the HTML pages.
+
+`static` contains the scripts and other static files for the site.
+
 ### Hymns
 
-The hymn lyrics can be found in the [content directory](./content/hymns/).
+The hymn lyrics can be found in the ["content" directory](./content/hymns/).
 They are named according to their hymn number (e.g. hymn number 200 would be `200.md`).
 
 At the top of each file, there is a block of text enclosed in 3 dashes (`---`) known as "frontmatter".
@@ -59,12 +85,12 @@ You are my All in All.
 
 ### Layouts
 
-The HTML layouts can be found in the [layouts directory](./layouts/).
+The HTML layouts can be found in the ["layouts" directory](./layouts/).
 The layouts are written in HTML, with [Hugo's templating syntax](https://gohugo.io/templates/introduction/).
 
 ### Static Files
 
-Static files such as icons, CSS and scripts can be found in the [static directory](./static/).
+Static files such as icons, CSS and scripts can be found in the ["static" directory](./static/).
 
 ### Scripts
 

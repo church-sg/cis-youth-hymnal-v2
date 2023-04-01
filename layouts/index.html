@@ -5,7 +5,14 @@
     <input id="search" type="text" placeholder="Search" autocomplete="off" />
   </div>
 </div>
-<ul id="results"></ul>
+<div class="text-divider-parent">
+  <div class="text-divider">English</div>
+</div>
+<ul class="results" id="results"></ul>
+<div class="text-divider-parent">
+  <div class="text-divider">中文</div>
+</div>
+<ul class="results" id="chinese"></ul>
 <script type="text/javascript" src='{{ "jquery-3.6.1.min.js" | absURL }}'></script>
 <script type="text/javascript" src='{{ "js/script.js" | absURL }}'></script>
 {{ end }}

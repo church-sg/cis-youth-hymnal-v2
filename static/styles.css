@@ -103,24 +103,55 @@ main {
   box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
 }
 
-#results {
+.text-divider-parent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-divider {
+  display: flex;
+  align-items: center;
+  color: darkgray;
+  width: 100%;
+  max-width: 576px; /*0.3 * 1920*/
+  margin-bottom: 0.75rem;
+  --text-divider-gap: 1rem;
+}
+
+.text-divider::before,
+.text-divider::after {
+  content: "";
+  height: 1px;
+  background-color: darkgray;
+  flex-grow: 1;
+  margin: 0px 1rem;
+}
+
+.no-hymn-msg {
+  color: darkgray;
+  font-style: italic;
+  text-align: center;
+}
+
+.results {
   list-style: none;
   margin: 0rem 3rem;
   padding: 0;
   padding-bottom: 0.5rem;
 }
 
-#results li {
+.results li {
   margin: 0rem 0rem 0.75rem 0rem;
   display: flex;
   justify-content: center;
 }
 
-#results li ::selection {
+.results li ::selection {
   background: #ffec96;
 }
 
-#results li a {
+.results li a {
   padding: 1.25rem;
   display: block;
   height: 100%;
@@ -137,7 +168,7 @@ main {
   overflow: hidden;
 }
 
-#results li a:active {
+.results li a:active {
   box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   background-color: #a496ff;
   color: white;
@@ -145,7 +176,7 @@ main {
 }
 
 @media (hover: hover) {
-  #results li a:hover {
+  .results li a:hover {
     box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
     background-color: #a496ff;
     color: white;
@@ -154,15 +185,15 @@ main {
 }
 
 @media (max-width: 480px) {
-  #results {
+  .results {
     margin: 0rem 1rem;
   }
 
-  #results li {
+  .results li {
     margin: 0rem 0rem 0.5rem 0rem;
   }
 
-  #results li a {
+  .results li a {
     padding: 1rem;
   }
 }
@@ -173,12 +204,12 @@ main {
   display: inline-block;
 }
 
-#results li a:active .hymn-number {
+.results li a:active .hymn-number {
   color: #ffec96;
 }
 
 @media (hover: hover) {
-  #results li a:hover .hymn-number {
+  .results li a:hover .hymn-number {
     color: #ffec96;
   }
 }
