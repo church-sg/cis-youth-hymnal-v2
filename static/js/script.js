@@ -80,9 +80,9 @@ function numberSearch(number) {
  * @param  {Array} results to display
  */
 function renderResults(englishResults, chineseResults) {
-  var $noSongMsg = $("<p>", {
-    class: "noSongMsg",
-  }).append("No songs found");
+  var $noHymnMsg = $("<p>", {
+    class: "no-hymn-msg",
+  }).append("~ No hymns found ~");
 
   if (englishResults.length) {
     englishResults.forEach(function(result) {
@@ -101,11 +101,7 @@ function renderResults(englishResults, chineseResults) {
       $results.append($result);
     });
   } else {
-    $results.append(
-      $("<p>", {
-        class: "no-hymn-msg",
-      }).append("~ No hymns found ~")
-    );
+    $results.append($noHymnMsg);
   }
 
   if (chineseResults.length) {
@@ -125,11 +121,7 @@ function renderResults(englishResults, chineseResults) {
       $chineseResults.append($chineseResult);
     });
   } else {
-    $chineseResults.append(
-      $("<p>", {
-        class: "no-hymn-msg",
-      }).append("~ No hymns found ~")
-    );
+    $chineseResults.append($noHymnMsg);
   }
 }
 
