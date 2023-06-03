@@ -4,6 +4,7 @@ STATUS="$(git status)"
 
 if [[ $STATUS == *"nothing to commit, working tree clean"* ]]
 then
+    rm public/ -rf
     hugo # build using hugo
     # add CNAME to public/
     echo "youthhymns.church.org.sg" > public/CNAME
