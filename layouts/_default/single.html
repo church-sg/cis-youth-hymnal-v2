@@ -1,7 +1,9 @@
-{{ define "title" }}{{ .Title}}{{ end }} {{ define "main" }} {{/*
-https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
-*/}} {{ $pages := sort (where site.RegularPages "Section" .Section)
-".File.TranslationBaseName" }}
+{{ define "title" }}
+{{ .File.TranslationBaseName }} - {{ .Title}}
+{{ end }}
+{{ define "main" }}
+{{/*https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech*/}}
+{{ $pages := sort (where site.RegularPages "Section" .Section) ".File.TranslationBaseName" }}
 <div class="box">
   <div class="header">
     <a class="btn-back" href="../../"><span class="material-symbols-outlined"> arrow_back </span></a>
