@@ -1,26 +1,26 @@
 const addResourcesToCache = async (resources) => {
-  const cache = await caches.open("v1");
-  await cache.addAll(resources);
-};
+  const cache = await caches.open("v1")
+  await cache.addAll(resources)
+}
 
 const putInCache = async (request, response) => {
-  const cache = await caches.open("v1");
-  await cache.put(request, response);
-};
+  const cache = await caches.open("v1")
+  await cache.put(request, response)
+}
 
 const networkFirst = async (request) => {
   try {
-    const response = await fetch(request);
-    putInCache(request, response.clone());
-    return fetch(request);
+    const response = await fetch(request)
+    putInCache(request, response.clone())
+    return fetch(request)
   } catch (err) {
-    return caches.match(request);
+    return caches.match(request)
   }
-};
+}
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(networkFirst(event.request));
-});
+  event.respondWith(networkFirst(event.request))
+})
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -30,6 +30,35 @@ self.addEventListener("install", (event) => {
       "/js/script.js",
       "/js/resize.js",
       // Hymns
+      "/chinese/1/",
+      "/chinese/10/",
+      "/chinese/11/",
+      "/chinese/12/",
+      "/chinese/13/",
+      "/chinese/14/",
+      "/chinese/15/",
+      "/chinese/16/",
+      "/chinese/17/",
+      "/chinese/18/",
+      "/chinese/19/",
+      "/chinese/2/",
+      "/chinese/20/",
+      "/chinese/21/",
+      "/chinese/22/",
+      "/chinese/23/",
+      "/chinese/24/",
+      "/chinese/25/",
+      "/chinese/26/",
+      "/chinese/27/",
+      "/chinese/28/",
+      "/chinese/29/",
+      "/chinese/3/",
+      "/chinese/4/",
+      "/chinese/5/",
+      "/chinese/6/",
+      "/chinese/7/",
+      "/chinese/8/",
+      "/chinese/9/",
       "/english/1/",
       "/english/10/",
       "/english/100/",
@@ -155,5 +184,5 @@ self.addEventListener("install", (event) => {
       "/english/98/",
       "/english/99/",
     ])
-  );
-});
+  )
+})
