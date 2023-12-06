@@ -320,6 +320,11 @@ main {
 }
 
 .btn-prev:hover,
+.btn-next:hover {
+  cursor: pointer;
+}
+
+.btn-prev:hover,
 .btn-next:hover,
 .btn-prev:active,
 .btn-next:active {
