@@ -6,6 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [Codebase Walkthrough](#codebase-walkthrough)
     - [Branches](#branches)
+    - [File Structure Overview](#file-structure-overview)
     - [Hymns](#hymns)
     - [Layouts](#layouts)
     - [Static Files](#static-files)
@@ -188,6 +189,8 @@ nothing to commit, working tree clean
 Otherwise, commit/discard your changes accordingly before proceeding.
 
 Then, simply run [deploy.sh](./deploy.sh) using Bash.
+
+> Warning! deploy.sh requires Hugo to be installed to work!
 
 ```
 bash deploy.sh
