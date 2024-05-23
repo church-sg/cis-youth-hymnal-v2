@@ -91,6 +91,7 @@ function renderResults(englishResults, chineseResults) {
             result.href.replace("/english/", "") +
             "</span> " +
             result.title,
+          id: result.href.replace("/english/", "eng"),
         })
       );
 
@@ -115,6 +116,7 @@ function renderResults(englishResults, chineseResults) {
             result.href.replace("/chinese/", "") +
             "</span> " +
             result.title,
+          id: result.href.replace("/chinese/", "chi")
         })
       );
 
@@ -150,10 +152,16 @@ $(document).ready(function() {
 });
 
 $(window).on("load", () => {
+  //pre-load full list
   getPagesIndex().then(() => {
-    //pre-load full list
     renderResults(englishIndex, chineseIndex);
   });
+
+  // Scroll to hashtag
+  setTimeout(() => {
+    var hash = window.location.hash;
+    $('html, body').animate({ scrollTop: $(hash).offset().top - 160, }); //-160 to account for search bar
+  }, 200);
 });
 
 // Add service worker

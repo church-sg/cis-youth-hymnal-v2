@@ -5,7 +5,7 @@ define "main" }}
 ".File.TranslationBaseName" }}
 <div class="box">
   <div class="header">
-    <a class="btn-back" href="../../"
+    <a class="btn-back" href="../../#{{substr .File.Dir 0 3}}{{ .File.TranslationBaseName }}"
       ><span class="material-symbols-outlined"> arrow_back </span></a
     >
     <p class="title">
@@ -23,7 +23,7 @@ define "main" }}
       hx-get="{{ .Permalink }}"
       hx-swap="outerHTML"
       hx-target="body"
-      hx-push-url="true"
+      hx-push-url="false"
       ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     <!-- Use Arrow Forward, then flip with CSS. Because arrow_back isn't centered for some reason -->
@@ -40,7 +40,7 @@ define "main" }}
       hx-get="{{ .Permalink }}"
       hx-swap="outerHTML"
       hx-target="body"
-      hx-push-url="true"
+      hx-push-url="false"
       ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     {{ else }}
