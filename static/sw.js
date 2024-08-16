@@ -3,23 +3,21 @@ const addResourcesToCache = async (resources) => {
   await cache.addAll(resources);
 };
 
-const putInCache = async (request, response) => {
-  const cache = await caches.open("v1");
-  await cache.put(request, response);
-};
-
-const networkFirst = async (request) => {
-  try {
-    const response = await fetch(request);
-    putInCache(request, response.clone());
-    return fetch(request);
-  } catch (err) {
-    return caches.match(request);
-  }
-};
-
-self.addEventListener("fetch", (event) => {
-  event.respondWith(networkFirst(event.request));
+// Stale-while-revalidate
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.open("v1")
+      .then(function(cache) {
+        cache.match(event.request)
+          .then(function(cacheResponse) {
+            fetch(event.request)
+              .then(function(networkResponse) {
+                cache.put(event.request, networkResponse)
+              })
+            return cacheResponse || networkResponse
+          })
+      })
+  )
 });
 
 self.addEventListener("install", (event) => {
