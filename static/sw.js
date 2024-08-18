@@ -4,21 +4,20 @@ const addResourcesToCache = async (resources) => {
 };
 
 // Stale-while-revalidate
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.open("v1")
-      .then(function(cache) {
-        cache.match(event.request)
-          .then(function(cacheResponse) {
-            fetch(event.request)
-              .then(function(networkResponse) {
-                cache.put(event.request, networkResponse)
-              })
-            return cacheResponse || networkResponse
-          })
-      })
-  )
-});
+self.addEventListener('fetch', async (event) => {
+    // Open the cache
+    event.respondWith(caches.open("v1").then((cache) => {
+      // Respond with the image from the cache or from the network
+      return cache.match(event.request).then((cachedResponse) => {
+        return cachedResponse || fetch(event.request.url).then((fetchedResponse) => {
+          cache.put(event.request, fetchedResponse.clone());
+
+          // Return the network response
+          return fetchedResponse;
+        });
+      });
+    }));
+  }});
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
