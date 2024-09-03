@@ -7,7 +7,7 @@ HYMN_NO=$(gum input --placeholder "Hymn Number")
 
 echo "$LANG Hymn $HYMN_NO"
 
-TITLE=$(gum input  --placeholder "Title")
+TITLE=$(gum input --placeholder "Title")
 
 TITLE_ARRAY=($TITLE)
 
@@ -20,4 +20,4 @@ medleyFrom: 0
 medleyTo: 0
 ---
 
-" >> ./content/$LANG_LOWER/$HYMN_NO.md
+" >>./content/$LANG_LOWER/$HYMN_NO.md
