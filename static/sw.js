@@ -3,21 +3,45 @@ const addResourcesToCache = async (resources) => {
   await cache.addAll(resources);
 };
 
-// Stale-while-revalidate
-self.addEventListener('fetch', async (event) => {
-    // Open the cache
-    event.respondWith(caches.open("v1").then((cache) => {
-      // Respond with the image from the cache or from the network
-      return cache.match(event.request).then((cachedResponse) => {
-        return cachedResponse || fetch(event.request.url).then((fetchedResponse) => {
-          cache.put(event.request, fetchedResponse.clone());
+const fetchAndCacheIfOk = async (event) => {
+  try {
+    const response = await fetch(event.request)
 
-          // Return the network response
-          return fetchedResponse;
-        });
-      });
-    }));
-  }});
+    // don't cache if response not ok
+    if (response.ok) {
+      const responseClone = response.clone()
+      const cache = await caches.open("v1")
+      await cache.put(event.request, responseClone)
+    }
+
+    return response;
+  } catch (e) {
+    return e;
+  }
+}
+
+const fetchWithCache = async (event) => {
+  const cache = await caches.open("v1")
+  const response = await cache.match(event.request)
+  if(!!response) {
+    // cached, so update in the background (no await)
+    fetchAndCacheIfOk(event);
+    // return cached response
+    return response
+  } else {
+    // not cached, so request and cache
+    return fetchAndCacheIfOk(event)
+  }
+}
+
+const fetchHandler = (event) => {
+  // only intercept the request if there is no no-cache header
+  if (event.request.headers.get("cache-control") !== "no-cache") {
+    event.respondWith(fetchWithCache(event))
+  }
+}
+
+self.addEventListener("fetch", fetchHandler)
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -192,6 +216,6 @@ self.addEventListener("install", (event) => {
       "/english/97/",
       "/english/98/",
       "/english/99/",
-    ])
+    ]),
   );
 });
