@@ -1,5 +1,0 @@
-# baseURL = 'https://notyumin.github.io/cis-youth-hymnal-v2/'
-baseURL = 'https://youthhymns.church.org.sg'
-languageCode = 'en-us'
-title = 'CIS Youth Hymnal'
-staticDir = "static"
