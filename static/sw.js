@@ -3,6 +3,9 @@ const addResourcesToCache = async (resources) => {
   await cache.addAll(resources);
 };
 
+
+// Stale-while-revalidate caching from:
+// https://jcs.wtf/service-worker-stale-while-revalidate/
 const fetchAndCacheIfOk = async (event) => {
   try {
     const response = await fetch(event.request)

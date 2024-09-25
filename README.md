@@ -23,3 +23,5 @@ This site is meant to be a successor to the reliable but (in my opinion) outdate
 Learning Hugo: https://hugo-mini-course.netlify.app/
 
 Search indexing: https://gist.github.com/sebz/efddfc8fdcb6b480f567
+
+Stale-While-Revalidate Caching: https://jcs.wtf/service-worker-stale-while-revalidate/
