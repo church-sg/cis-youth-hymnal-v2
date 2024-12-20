@@ -1,9 +1,21 @@
 /* Global */
+:root {
+  --main: /*#0ea5e9;/*#38bdf8;*/#a496ff;
+  --foreground: #ffffff;
+  --background: #f8f7ff;
+  --highlight: #ffec96;
+  --scrollbar: #d6dee1;
+  --scrollbar-hover: #a8bbbf;
+  --btn-hover: #00000011;
+  --text-main: #000000;
+  --text-mute: darkgray;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #f8f7ff;
+  background-color: var(--background);
 }
 
 body {
@@ -34,7 +46,7 @@ main {
 
 .header {
   flex: 0 1 auto;
-  background-color: #a496ff;
+  background-color: var(--main);
   display: flex;
   justify-content: center;
   font-size: 2rem;
@@ -44,12 +56,12 @@ main {
 }
 
 .header ::selection {
-  background: #ffec96;
-  color: #a496ff;
+  background: var(--highlight);
+  color: var(--main);
 }
 
 .header input::selection {
-  color: black;
+  color: var(--text-main);
 }
 
 /* Phone portrait width */
@@ -67,7 +79,7 @@ main {
 
 .search-bg {
   position: sticky;
-  background-color: #f8f7ff;
+  background-color: var(--background);
   top: 4.85rem;
   width: 100%;
   display: flex;
@@ -80,7 +92,7 @@ main {
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   border-radius: 500px; /*Arbitrarily large number to make pill shape */
-  color: black;
+  color: var(--text-main);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
   position: sticky;
 }
@@ -94,7 +106,7 @@ main {
 }
 
 #search::placeholder {
-  color: darkgray;
+  color: var(--text-mute);
   font-style: italic;
 }
 
@@ -112,7 +124,7 @@ main {
 .text-divider {
   display: flex;
   align-items: center;
-  color: darkgray;
+  color: var(--text-mute);
   width: 100%;
   max-width: 576px; /*0.3 * 1920*/
   margin-bottom: 0.75rem;
@@ -123,13 +135,13 @@ main {
 .text-divider::after {
   content: "";
   height: 1px;
-  background-color: darkgray;
+  background-color: var(--text-mute);
   flex-grow: 1;
   margin: 0px 1rem;
 }
 
 .no-hymn-msg {
-  color: darkgray;
+  color: var(--text-mute);
   font-style: italic;
   text-align: center;
 }
@@ -148,15 +160,15 @@ main {
 }
 
 .results li ::selection {
-  background: #ffec96;
+  background: var(--highlight);
 }
 
 .results li a {
   padding: 1.25rem;
   display: block;
   height: 100%;
-  color: black;
-  background-color: white;
+  color: var(--text-main);
+  background-color: var(--foreground);
   border-radius: 10px;
   text-align: start;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
@@ -170,16 +182,16 @@ main {
 
 .results li a:active {
   box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
-  background-color: #a496ff;
-  color: white;
+  background-color: var(--main);
+  color: var(--foreground);
   font-weight: 500;
 }
 
 @media (hover: hover) {
   .results li a:hover {
     box-shadow: rgba(0, 0, 0, 0.28) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
-    background-color: #a496ff;
-    color: white;
+    background-color: var(--main);
+    color: var(--foreground);
     font-weight: 500;
   }
 }
@@ -205,12 +217,12 @@ main {
 }
 
 .results li a:active .hymn-number {
-  color: #ffec96;
+  color: var(--highlight);
 }
 
 @media (hover: hover) {
   .results li a:hover .hymn-number {
-    color: #ffec96;
+    color: var(--highlight);
   }
 }
 
@@ -231,16 +243,16 @@ main {
 .btn-back {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--foreground);
   margin: 0rem 0.5rem;
 }
 
 .btn-back:hover {
-  color: #ffec96;
+  color: var(--highlight);
 }
 
 .title {
-  color: white;
+  color: var(--foreground);
   margin: 1rem 0rem;
 }
 
@@ -255,7 +267,7 @@ main {
 }
 
 .hl-text {
-  color: #ffec96;
+  color: var(--highlight);
 }
 
 .content {
@@ -269,7 +281,7 @@ main {
 }
 
 .lyrics {
-  background-color: white;
+  background-color: var(--foreground);
   border-radius: 10px;
   padding: 1rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* https://getcssscan.com/css-box-shadow-examples */
@@ -287,16 +299,16 @@ main {
 }
 
 .lyrics::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
+  background-color: var(--scrollbar);
   border-radius: 500px;
 }
 
 .lyrics::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf;
+  background-color: var(--scrollbar-hover);
 }
 
 .lyrics ::selection {
-  background: #ffec96;
+  background: var(--highlight);
 }
 
 /* Phone portrait width */
@@ -313,7 +325,7 @@ main {
 
 .btn-prev,
 .btn-next {
-  color: black;
+  color: var(--text-main);
   display: flex;
   align-items: center;
   padding: 0.3rem;
@@ -328,7 +340,7 @@ main {
 .btn-next:hover,
 .btn-prev:active,
 .btn-next:active {
-  background-color: #00000011;
+  background-color: var(--btn-hover);
 }
 
 .invisible {
