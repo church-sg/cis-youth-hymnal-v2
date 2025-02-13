@@ -26,7 +26,7 @@ const fetchAndCacheIfOk = async (event) => {
 const fetchWithCache = async (event) => {
   const cache = await caches.open("v1")
   const response = await cache.match(event.request)
-  if(!!response) {
+  if (!!response) {
     // cached, so update in the background (no await)
     fetchAndCacheIfOk(event);
     // return cached response
@@ -125,6 +125,8 @@ self.addEventListener("install", (event) => {
       "/english/131/",
       "/english/132/",
       "/english/133/",
+      "/english/134/",
+      "/english/135/",
       "/english/14/",
       "/english/15/",
       "/english/16/",

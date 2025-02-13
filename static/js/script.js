@@ -83,18 +83,7 @@ function renderResults(englishResults, chineseResults) {
   if (englishResults.length) {
     englishResults.forEach(function(result) {
       var $result = $("<li>");
-      $result.append(
-        $("<a>", {
-          href: "." + result.href + "/", //"." to transform href to relative href "./"
-          html:
-            "<span class='hymn-number'>" +
-            result.href.replace("/english/", "") +
-            "</span> " +
-            result.title,
-          id: result.href.replace("/english/", "eng"),
-        })
-      );
-
+      $result.append(generateListItem(result, "english"));
       $results.append($result);
     });
   } else {
@@ -108,18 +97,7 @@ function renderResults(englishResults, chineseResults) {
   if (chineseResults.length) {
     chineseResults.forEach(function(result) {
       var $chineseResult = $("<li>");
-      $chineseResult.append(
-        $("<a>", {
-          href: "." + result.href + "/", //"." to transform href to relative href "./"
-          html:
-            "<span class='hymn-number'>" +
-            result.href.replace("/chinese/", "") +
-            "</span> " +
-            result.title,
-          id: result.href.replace("/chinese/", "chi")
-        })
-      );
-
+      $chineseResult.append(generateListItem(result, "chinese"));
       $chineseResults.append($chineseResult);
     });
   } else {
@@ -129,6 +107,23 @@ function renderResults(englishResults, chineseResults) {
       }).append("~ No hymns found ~")
     );
   }
+}
+
+// Takes in a result + language and generates the jquery song list element
+function generateListItem(result, language) {
+  const relativeHref = `.${result.href}/` //"." to transform href to relative href "./"
+  // const href = `${window.location.href.split('#')[0]}${result.href.substring(1)}`
+  const hymnNo = result.href.replace(`/${language}/`, "")
+  const title = result.title
+  const id = result.href.replace(`/${language}/`, language.substring(0,3)) //truncate language to first 3 letters, i.e. eng and chi
+  return $("<a>", {
+    href: relativeHref,
+    html: `<span class="hymn-number">${hymnNo}</span> ${title}`,
+    id: id,
+    // "hx-target": "body",
+    // "hx-swap": "outerHTML",
+    // "hx-get": href,
+  })
 }
 
 async function registerSW() {
