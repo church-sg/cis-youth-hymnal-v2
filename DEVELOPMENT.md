@@ -4,6 +4,7 @@
 
 - [Development](#development)
   - [Table of Contents](#table-of-contents)
+  - [Setup](#setup)
   - [Codebase Walkthrough](#codebase-walkthrough)
     - [Branches](#branches)
     - [File Structure Overview](#file-structure-overview)
@@ -16,6 +17,22 @@
       - [1. Add to index](#1-add-to-index)
       - [2. Add to cache](#2-add-to-cache)
     - [Deploy](#deploy)
+
+## Setup
+**Step 1: Clone this repository**
+
+**Step 2: Install the necessary packages.**  
+(Click on respective link to go to their installation page):
+- [Hugo](https://gohugo.io/installation/) (For running and building the project)
+- [grunt](https://gruntjs.com/getting-started) (Optional: For generating PagesIndex.json)
+  - Currently, is `npm install -g grunt-cli` 
+  - ^Requires [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (Optional: For running generateCache.js)
+- [Gum](https://github.com/charmbracelet/gum) (Optional: To run newHymn.sh)
+
+**Step 3: Run the project!**  
+`cd` to the project directory and run `hugo serve` to start the development server.  
+Access the site at `localhost:1313` by default. 
 
 ## Codebase Walkthrough
 
@@ -46,8 +63,7 @@ A third `development` branch might be added in the future if necessary.
     └───js
 ```
 
-The `archetypes`, `node_modules`, `resources` and `public` directories can be ignored for general
-development purposes.
+The `archetypes`, `node_modules`, `resources` and `public` directories can be ignored for general development purposes.
 
 `content` contains the Markdown files for the hymn lyrics.
 
