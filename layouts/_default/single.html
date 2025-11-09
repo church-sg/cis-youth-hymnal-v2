@@ -1,14 +1,19 @@
-{{ define "main" }} {{/*
-https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech
-*/}} {{ $pages := sort (where site.RegularPages "Section" .Section)
+{{ define "title" }} {{ .File.TranslationBaseName }} - {{ .Title}} {{ end }} {{
+define "main" }}
+{{/*https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotech*/}}
+{{ $pages := sort (where site.RegularPages "Section" .Section)
 ".File.TranslationBaseName" }}
 <div class="box">
   <div class="header">
     <a class="btn-back" href="../../" aria-label="Back to home"
       ><span class="material-symbols-outlined" aria-hidden="true"> arrow_back </span></a
+    <a class="btn-back" href="../../#{{substr .File.Dir 0 3}}{{ .File.TranslationBaseName }}"
+      ><span class="material-symbols-outlined"> arrow_back </span></a
     >
     <p class="title">
-      Hymn <span class="hl-text">{{ .File.TranslationBaseName }}</span
+      {{ strings.TrimRight "\\" (humanize .File.Dir) }}
+      <!-- from "english\" to "English" -->
+      <span class="hl-text">{{ .File.TranslationBaseName }}</span
       ><span class="title-text"> - {{ .Title }}</span>
     </p>
     <button id="version-toggle" class="version-toggle-btn" onclick="toggleHymnalVersion()" aria-label="Toggle between classic and enhanced version">
@@ -24,6 +29,17 @@ https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotec
     >{{/* Use Arrow Forward, then flip with CSS. Because arrow_back isn't
     centered for some reason */}} {{ else }}
     <a class="btn-prev invisible" href="#" aria-hidden="true" tabindex="-1"
+    <a
+      class="btn-prev"
+      hx-get="{{ .Permalink }}"
+      hx-swap="outerHTML"
+      hx-target="body"
+      hx-push-url="false"
+      ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
+    >
+    <!-- Use Arrow Forward, then flip with CSS. Because arrow_back isn't centered for some reason -->
+    {{ else }}
+    <a class="btn-prev invisible" href="{{ .Permalink }}"
       ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     {{ end }}
@@ -51,6 +67,13 @@ https://discourse.gohugo.io/t/custom-sort-hugo-single-pages/21442?u=felicianotec
     {{ with $pages.Prev . }}
     <a class="btn-next" href="{{ .Permalink }}" aria-label="Next hymn: {{ .Title }}"
       ><span class="material-symbols-outlined" aria-hidden="true"> arrow_forward_ios </span></a
+    <a
+      class="btn-next"
+      hx-get="{{ .Permalink }}"
+      hx-swap="outerHTML"
+      hx-target="body"
+      hx-push-url="false"
+      ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     {{ else }}
     <a class="btn-next invisible" href="#" aria-hidden="true" tabindex="-1"

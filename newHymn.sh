@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # Requires Gum to be installed: https://github.com/charmbracelet/gum
+LANG=$(gum choose "English" "Chinese")
+LANG_LOWER=${LANG,,}
 HYMN_NO=$(gum input --placeholder "Hymn Number")
 
-echo "Hymn $HYMN_NO"
+echo "$LANG Hymn $HYMN_NO"
 
-TITLE=$(gum input  --placeholder "Title")
+TITLE=$(gum input --placeholder "Title")
 
 TITLE_ARRAY=($TITLE)
 
@@ -18,4 +20,4 @@ medleyFrom: 0
 medleyTo: 0
 ---
 
-" >> ./content/hymns/$HYMN_NO.md
+" >>./content/$LANG_LOWER/$HYMN_NO.md

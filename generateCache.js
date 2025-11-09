@@ -2,12 +2,21 @@
 
 const fs = require("fs");
 
-const hymnFileNames = fs.readdirSync("./content/hymns/");
+const chineseFileNames = fs.readdirSync("./content/chinese/");
+const englishFileNames = fs.readdirSync("./content/english/");
 
-const hymnNos = hymnFileNames.map((fileName) => {
+const chineseHymnNos = chineseFileNames.map((fileName) => {
   return fileName.slice(0, -3); // remove .md
 });
 
-hymnNos.forEach((hymnNo) => {
-  console.log(`"/hymns/${hymnNo}/",`);
+const englishHymnNos = englishFileNames.map((fileName) => {
+  return fileName.slice(0, -3); // remove .md
+});
+
+chineseHymnNos.forEach((hymnNo) => {
+  console.log(`"/chinese/${hymnNo}/",`);
+});
+
+englishHymnNos.forEach((hymnNo) => {
+  console.log(`"/english/${hymnNo}/",`);
 });

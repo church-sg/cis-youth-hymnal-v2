@@ -4,8 +4,10 @@
 
 - [Development](#development)
   - [Table of Contents](#table-of-contents)
+  - [Setup](#setup)
   - [Codebase Walkthrough](#codebase-walkthrough)
     - [Branches](#branches)
+    - [File Structure Overview](#file-structure-overview)
     - [Hymns](#hymns)
     - [Layouts](#layouts)
     - [Static Files](#static-files)
@@ -15,6 +17,22 @@
       - [1. Add to index](#1-add-to-index)
       - [2. Add to cache](#2-add-to-cache)
     - [Deploy](#deploy)
+
+## Setup
+**Step 1: Clone this repository**
+
+**Step 2: Install the necessary packages.**  
+(Click on respective link to go to their installation page):
+- [Hugo](https://gohugo.io/installation/) (For running and building the project)
+- [grunt](https://gruntjs.com/getting-started) (Optional: For generating PagesIndex.json)
+  - Currently, is `npm install -g grunt-cli` 
+  - ^Requires [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (Optional: For running generateCache.js)
+- [Gum](https://github.com/charmbracelet/gum) (Optional: To run newHymn.sh)
+
+**Step 3: Run the project!**  
+`cd` to the project directory and run `hugo serve` to start the development server.  
+Access the site at `localhost:1313` by default. 
 
 ## Codebase Walkthrough
 
@@ -28,9 +46,34 @@ via Github Pages.
 
 A third `development` branch might be added in the future if necessary.
 
+### File Structure Overview
+
+```
+├───archetypes
+├───content
+│   ├───chinese
+│   └───english
+├───layouts
+│   └───_default
+├───node_modules
+├───public
+├───resources
+└───static
+    ├───icons
+    └───js
+```
+
+The `archetypes`, `node_modules`, `resources` and `public` directories can be ignored for general development purposes.
+
+`content` contains the Markdown files for the hymn lyrics.
+
+`layouts` contains the HTML pages.
+
+`static` contains the scripts and other static files for the site.
+
 ### Hymns
 
-The hymn lyrics can be found in the [content directory](./content/hymns/).
+The hymn lyrics can be found in the ["content" directory](./content/hymns/).
 They are named according to their hymn number (e.g. hymn number 200 would be `200.md`).
 
 At the top of each file, there is a block of text enclosed in 3 dashes (`---`) known as "frontmatter".
@@ -59,12 +102,12 @@ You are my All in All.
 
 ### Layouts
 
-The HTML layouts can be found in the [layouts directory](./layouts/).
+The HTML layouts can be found in the ["layouts" directory](./layouts/).
 The layouts are written in HTML, with [Hugo's templating syntax](https://gohugo.io/templates/introduction/).
 
 ### Static Files
 
-Static files such as icons, CSS and scripts can be found in the [static directory](./static/).
+Static files such as icons, CSS and scripts can be found in the ["static" directory](./static/).
 
 ### Scripts
 
@@ -162,6 +205,8 @@ nothing to commit, working tree clean
 Otherwise, commit/discard your changes accordingly before proceeding.
 
 Then, simply run [deploy.sh](./deploy.sh) using Bash.
+
+> Warning! deploy.sh requires Hugo to be installed to work!
 
 ```
 bash deploy.sh
