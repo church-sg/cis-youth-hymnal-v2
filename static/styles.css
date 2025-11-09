@@ -298,3 +298,50 @@ main {
 .invisible {
   visibility: hidden;
 }
+
+/* Version Toggle Button */
+.version-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 500px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
+  right: 1rem;
+  transition: all 0.2s ease;
+}
+
+.version-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.version-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.version-toggle-btn .material-symbols-outlined {
+  font-size: 1.125rem;
+}
+
+@media (max-width: 480px) {
+  .version-toggle-btn {
+    right: 0.5rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .version-toggle-btn .version-label {
+    display: none;
+  }
+}
+
+/* Ensure header has position relative for absolute positioning */
+.header {
+  position: relative;
+}
