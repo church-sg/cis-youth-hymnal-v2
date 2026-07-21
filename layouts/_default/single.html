@@ -5,6 +5,8 @@ define "main" }}
 ".File.TranslationBaseName" }}
 <div class="box">
   <div class="header">
+    <a class="btn-back" href="../../" aria-label="Back to home"
+      ><span class="material-symbols-outlined" aria-hidden="true"> arrow_back </span></a
     <a class="btn-back" href="../../#{{substr .File.Dir 0 3}}{{ .File.TranslationBaseName }}"
       ><span class="material-symbols-outlined"> arrow_back </span></a
     >
@@ -14,10 +16,19 @@ define "main" }}
       <span class="hl-text">{{ .File.TranslationBaseName }}</span
       ><span class="title-text"> - {{ .Title }}</span>
     </p>
+    <button id="version-toggle" class="version-toggle-btn" onclick="toggleHymnalVersion()" aria-label="Toggle between classic and enhanced version">
+      <span class="material-symbols-outlined">science</span>
+      <span class="version-label">Try V2</span>
+    </button>
   </div>
 
   <section class="content">
     {{ with $pages.Next . }}
+    <a class="btn-prev" href="{{ .Permalink }}" aria-label="Previous hymn: {{ .Title }}"
+      ><span class="material-symbols-outlined" aria-hidden="true"> arrow_forward_ios </span></a
+    >{{/* Use Arrow Forward, then flip with CSS. Because arrow_back isn't
+    centered for some reason */}} {{ else }}
+    <a class="btn-prev invisible" href="#" aria-hidden="true" tabindex="-1"
     <a
       class="btn-prev"
       hx-get="{{ .Permalink }}"
@@ -33,8 +44,29 @@ define "main" }}
     >
     {{ end }}
 
-    <div class="lyrics">{{.Content}}</div>
+    <div class="lyrics" role="article" aria-label="Hymn lyrics">
+      {{.Content}}
+      {{ if or (ne .Params.medleyFrom 0) (ne .Params.medleyTo 0) }}
+      <div class="medley-links">
+        <p class="medley-title">Medley Navigation</p>
+        {{ if ne .Params.medleyFrom 0 }}
+        <a class="medley-link medley-from" href="{{ ref . .Params.medleyFrom }}">
+          <span class="material-symbols-outlined">skip_previous</span>
+          <span>Start from Hymn {{ .Params.medleyFrom }}</span>
+        </a>
+        {{ end }}
+        {{ if ne .Params.medleyTo 0 }}
+        <a class="medley-link medley-to" href="{{ ref . .Params.medleyTo }}">
+          <span>Continue to Hymn {{ .Params.medleyTo }}</span>
+          <span class="material-symbols-outlined">skip_next</span>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
     {{ with $pages.Prev . }}
+    <a class="btn-next" href="{{ .Permalink }}" aria-label="Next hymn: {{ .Title }}"
+      ><span class="material-symbols-outlined" aria-hidden="true"> arrow_forward_ios </span></a
     <a
       class="btn-next"
       hx-get="{{ .Permalink }}"
@@ -44,18 +76,11 @@ define "main" }}
       ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     {{ else }}
-    <a class="btn-next invisible" href="{{ .Permalink }}"
+    <a class="btn-next invisible" href="#" aria-hidden="true" tabindex="-1"
       ><span class="material-symbols-outlined"> arrow_forward_ios </span></a
     >
     {{ end }}
     <script type="text/javascript" src='{{ "js/resize.js" | absURL }}'></script>
   </section>
 </div>
-
-{{ if ne .Params.medleyFrom 0 }} Medleys from:
-<a class="previous" href="{{ ref . .Params.medleyFrom }}"
-  >{{ .Params.medleyFrom }}</a
->
-{{ end }} {{ if ne .Params.medleyTo 0 }} Medleys to:
-<a class="next" href="{{ ref . .Params.medleyTo }}">{{ .Params.medleyTo }}</a>
-{{ end }} {{ end }}
+{{ end }}

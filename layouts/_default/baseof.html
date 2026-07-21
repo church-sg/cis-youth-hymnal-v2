@@ -20,6 +20,27 @@
     <title>{{ block "title" .}} {{ .Site.Title }} {{ end }}</title>
   </head>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" type="image/png" sizes="196x196" href='{{ "icons/favicon-196.png" | absURL }}' />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script type="text/javascript" src='{{ "js/version-switcher.js" | absURL }}'></script>
+  <link rel="stylesheet" id="version-stylesheet" href='{{ "styles.css" | absURL }}' />
+  <link rel="manifest" href='{{ "manifest.json" | absURL }}' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#a496ff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1a1625" media="(prefers-color-scheme: dark)" />
+  <title>{{ block "title" .}} {{ .Site.Title }} {{ end }}</title>
+</head>
+
+<body>
+  {{ block "main" . }}
+  <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+</body>
+
   <body>
     {{ block "main" . }}
     <!-- The part of the page that begins to differ between templates -->

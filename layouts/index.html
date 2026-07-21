@@ -1,10 +1,15 @@
 {{ define "main" }}
 <div class="header with-search-bar">
   <p class="title"><span class="hl-text">CIS</span> Youth Hymnal</p>
+  <button id="version-toggle" class="version-toggle-btn" onclick="toggleHymnalVersion()" aria-label="Toggle between classic and enhanced version">
+    <span class="material-symbols-outlined">science</span>
+    <span class="version-label">Try V2</span>
+  </button>
   <div class="search-bg">
-    <input id="search" type="text" placeholder="Search" autocomplete="off" />
+    <input id="search" type="text" placeholder="Search" autocomplete="off" role="search" aria-label="Search hymns by title, number, or lyrics" />
   </div>
 </div>
+<ul id="results" role="list" aria-live="polite" aria-label="Search results"></ul>
 <div class="text-divider-parent">
   <div class="text-divider">English</div>
 </div>
@@ -14,5 +19,5 @@
 </div>
 <ul class="results" id="chinese"></ul>
 <script type="text/javascript" src='{{ "jquery-3.6.1.min.js" | absURL }}'></script>
-<script type="text/javascript" src='{{ "js/script.js" | absURL }}'></script>
+<script type="text/javascript" src='{{ "js/loader.js" | absURL }}'></script>
 {{ end }}
