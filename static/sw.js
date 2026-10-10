@@ -142,6 +142,8 @@ self.addEventListener("install", (event) => {
       "/english/142/",
       "/english/143/",
       "/english/144/",
+      "/english/145/",
+      "/english/146/",
       "/english/15/",
       "/english/16/",
       "/english/17/",
